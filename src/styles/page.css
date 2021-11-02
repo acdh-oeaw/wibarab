@@ -1,0 +1,40 @@
+.skip-link {
+  position: absolute;
+  transform: translateY(-100vh);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100%;
+}
+
+.page-section {
+  --page-section-width: 800px;
+
+  display: grid;
+  grid-template-columns:
+    [full-bleed-start] 1fr [bleed-start] minmax(0, 1rem) [content-start] minmax(
+      0,
+      var(--page-section-width)
+    )
+    [content-end] minmax(0, 1rem) [bleed-end] 1fr [full-bleed-end];
+  row-gap: 1.5rem;
+  column-gap: 1.5rem;
+}
+
+:where(.page-section) > * {
+  grid-column: content;
+}
+
+:where(.page-section) > .bleed {
+  grid-column: bleed;
+}
+
+:where(.page-section) > .full-bleed {
+  grid-column: full;
+}

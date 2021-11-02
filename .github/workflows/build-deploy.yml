@@ -1,0 +1,60 @@
+name: Build and deploy a Docker image
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            NEXT_PUBLIC_BASE_URL=https://wibarab.acdh-dev.oeaw.ac.at
+            NEXT_PUBLIC_GIT_REPO=${{ github.repository }}
+            NEXT_PUBLIC_GIT_BRANCH=main
+            NEXT_PUBLIC_MATOMO_BASE_URL=https://matomo.acdh.oeaw.ac.at
+            NEXT_PUBLIC_MATOMO_ID=
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy to Rancher
+        run: |
+          curl \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.RANCHER_API_TOKEN }}" \
+            'https://rancher.acdh-dev.oeaw.ac.at/p/c-zdbh8:p-s926c/workload/deployment:wibarab-website:wibarab-website?action=redeploy'

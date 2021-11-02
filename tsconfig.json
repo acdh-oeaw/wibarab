@@ -1,0 +1,22 @@
+{
+  "extends": "@stefanprobst/tsconfig",
+  "compilerOptions": {
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["*"]
+    },
+    "types": ["node", "@jest/types", "@types/mdx"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "app-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.config.mjs",
+    "**/*.config.js"
+  ],
+  "exclude": ["node_modules", ".next", "out", "public"]
+}

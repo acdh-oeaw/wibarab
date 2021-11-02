@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+:root {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-ui);
+  line-height: 1.5;
+}
+
+a,
+button {
+  transition: 150ms ease-in-out;
+  transition-property: background-color border-color color;
+}
