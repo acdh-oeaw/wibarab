@@ -22,7 +22,7 @@
     "lint:mdx:fix": "yarn run lint:mdx --output",
     "lint:style": "stylelint '**/*.css' --cache --cache-location .next/cache/stylelint/ --ignore-path .gitignore",
     "lint:style:fix": "yarn run lint:style --fix",
-    "postbuild": "yarn run generate:favicons",
+    "postbuild": "yarn run generate:favicons && yarn run generate:feed",
     "prebuild": "yarn run generate:route-manifest",
     "prepare": "simple-git-hooks || true",
     "start": "next start",
@@ -58,7 +58,6 @@
     "@stefanprobst/commitlint-config": "^1.0.2",
     "@stefanprobst/eslint-config-next": "^4.0.1",
     "@stefanprobst/favicons": "^2.0.2",
-    "@stefanprobst/next-feed": "^1.0.0",
     "@stefanprobst/prettier-config": "^2.0.0",
     "@stefanprobst/stylelint-config": "^2.0.0",
     "@stefanprobst/tsconfig": "^1.1.1",
@@ -86,7 +85,9 @@
     "tailwindcss": "^2.2.19",
     "typescript": "^4.4.4",
     "vfile": "^5.2.0",
-    "vfile-matter": "^3.0.1"
+    "vfile-matter": "^3.0.1",
+    "xast-util-feed": "^1.2.0",
+    "xast-util-to-xml": "^3.0.0"
   },
   "browserslist": {
     "development": [

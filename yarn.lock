@@ -1652,14 +1652,6 @@
     mri "^1.2.0"
     sharp "^0.29.2"
 
-"@stefanprobst/next-feed@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@stefanprobst/next-feed/-/next-feed-1.0.0.tgz#d9c5dbb891618af48845b0a957519800983f7c44"
-  integrity sha512-kpNU9/+2ucQHgES19TV57T8ZWvvT4Hl1DOmzC7sH1NdWcUimhhZrDqmmYJOjUzZULKGpGxFQ1c0eVy8v/4pF3w==
-  dependencies:
-    xast-util-feed "^1.2.0"
-    xast-util-to-xml "^3.0.0"
-
 "@stefanprobst/next-page-metadata@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@stefanprobst/next-page-metadata/-/next-page-metadata-2.0.0.tgz#f3096cece0196179d41c0e548b3166e9966fc352"

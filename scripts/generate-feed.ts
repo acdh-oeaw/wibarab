@@ -1,11 +1,12 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-import generateFeed from '@stefanprobst/next-feed'
 import * as YAML from 'js-yaml'
 import { VFile } from 'vfile'
 import { matter } from 'vfile-matter'
 import type { Channel, Entry } from 'xast-util-feed'
+import { rss } from 'xast-util-feed'
+import { toXml } from 'xast-util-to-xml'
 
 import { siteMetadata } from '../config/metadata.config'
 import { baseUrl } from '../config/site.config'
@@ -13,7 +14,7 @@ import { articleExtension, blogFolderPath } from '../src/lib/data/data.config'
 import type { ArticleMetadataRaw } from '../src/lib/data/types'
 import { log } from '../src/lib/utils/log'
 
-const feedFileName = path.join(process.cwd(), 'public', 'feed.xml')
+const feedFilePath = path.join(process.cwd(), 'public', 'feed.xml')
 
 async function getArticlesMetadata() {
   const folderEntries = await fs.readdir(blogFolderPath, { withFileTypes: true })
@@ -64,11 +65,9 @@ async function generate() {
     }
   })
 
-  generateFeed({
-    fileName: feedFileName,
-    channel,
-    entries,
-  })
+  const feed = toXml(rss(channel, entries))
+
+  await fs.writeFile(feedFilePath, feed, { encoding: 'utf-8' })
 }
 
 generate()
