@@ -1452,7 +1452,7 @@
 
 "@mdx-js/loader@^2.0.0-rc.1":
   version "2.0.0-rc.1"
-  resolved "https://registry.npmjs.org/@mdx-js/loader/-/loader-2.0.0-rc.1.tgz#56588fc0ab8ab85cea24a2589f6ea34c1e89d1c5"
+  resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-2.0.0-rc.1.tgz#56588fc0ab8ab85cea24a2589f6ea34c1e89d1c5"
   integrity sha512-qAwpcpa7lxovWONlBRYMmCWJti7PstIQQ7gAhXvHGDsIp8I/tJiCLNIE9/KTXCsN8TJoMoOoSxzxYToKtvYAUw==
   dependencies:
     "@mdx-js/mdx" "^2.0.0-rc.1"
@@ -1670,7 +1670,7 @@
 
 "@stefanprobst/next-svg@^3.0.1":
   version "3.0.1"
-  resolved "https://registry.npmjs.org/@stefanprobst/next-svg/-/next-svg-3.0.1.tgz#2503e12e5a9de4ceb7d08566f027995b31d90b8d"
+  resolved "https://registry.yarnpkg.com/@stefanprobst/next-svg/-/next-svg-3.0.1.tgz#2503e12e5a9de4ceb7d08566f027995b31d90b8d"
   integrity sha512-npWS3XBVl5Ovd+qccXnsNRHKz+h0cWjCIOb2pdkawVRbWhZnz1S9gJczvN47n8++v6dXru+W+u0tpO90F9T95g==
   dependencies:
     "@stefanprobst/svgo-loader" "^1.0.2"
@@ -8299,7 +8299,7 @@ remark-cli@^10.0.0:
 
 remark-frontmatter@^4.0.1:
   version "4.0.1"
-  resolved "https://registry.npmjs.org/remark-frontmatter/-/remark-frontmatter-4.0.1.tgz#84560f7ccef114ef076d3d3735be6d69f8922309"
+  resolved "https://registry.yarnpkg.com/remark-frontmatter/-/remark-frontmatter-4.0.1.tgz#84560f7ccef114ef076d3d3735be6d69f8922309"
   integrity sha512-38fJrB0KnmD3E33a5jZC/5+gGAC2WKNiPw1/fdXJvijBlhA7RCsvJklrYJakS0HedninvaCYW8lQGf9C918GfA==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -8309,7 +8309,7 @@ remark-frontmatter@^4.0.1:
 
 remark-mdx-frontmatter@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/remark-mdx-frontmatter/-/remark-mdx-frontmatter-1.0.1.tgz#413b5b6f6bed48187c9e90dd39024773b09b124c"
+  resolved "https://registry.yarnpkg.com/remark-mdx-frontmatter/-/remark-mdx-frontmatter-1.0.1.tgz#413b5b6f6bed48187c9e90dd39024773b09b124c"
   integrity sha512-ZT++VvsEsrdNdpWmaHvqb8P0U3Subr7ezB5spjMBETBrNOjfXx4LcFtbBojZEaJC1DwmoyFUpBF9Ady3qjbSEA==
   dependencies:
     estree-util-is-identifier-name "^1.1.0"
