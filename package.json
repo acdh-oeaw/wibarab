@@ -22,7 +22,7 @@
     "lint:mdx:fix": "yarn run lint:mdx --output",
     "lint:style": "stylelint '**/*.css' --cache --cache-location .next/cache/stylelint/ --ignore-path .gitignore",
     "lint:style:fix": "yarn run lint:style --fix",
-    "postbuild": "yarn run generate:favicons && yarn run generate:feed",
+    "postbuild": "yarn run generate:favicons",
     "prebuild": "yarn run generate:route-manifest",
     "prepare": "simple-git-hooks || true",
     "start": "next start",

@@ -42,3 +42,4 @@ public/**/icon.svg
 public/**/apple-touch-icon.png
 public/**/*.webmanifest
 public/feed.xml
+src/lib/core/navigation/routes.ts

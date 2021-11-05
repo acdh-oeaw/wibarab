@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-import { CORE_SCHEMA } from 'js-yaml'
+import * as YAML from 'js-yaml'
 import { VFile } from 'vfile'
 import { matter } from 'vfile-matter'
 
@@ -32,7 +32,7 @@ export async function getArticlePreviews(): Promise<Array<ArticleMetadata>> {
 export async function getArticlePreview(id: string): Promise<ArticleMetadata> {
   const filePath = path.join(blogFolderPath, id + articleExtension)
   const content = await fs.readFile(filePath, { encoding: 'utf-8' })
-  const metadata = matter(new VFile(content), { yaml: { schema: CORE_SCHEMA } }).data[
+  const metadata = matter(new VFile(content), { yaml: { schema: YAML.CORE_SCHEMA } }).data[
     'matter'
   ] as ArticleMetadataRaw
 
