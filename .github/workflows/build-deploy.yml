@@ -57,4 +57,4 @@ jobs:
           curl \
             -X POST \
             -H "Authorization: Bearer ${{ secrets.RANCHER_API_TOKEN }}" \
-            'https://rancher.acdh-dev.oeaw.ac.at/p/c-zdbh8:p-s926c/workload/deployment:wibarab-website:wibarab-website?action=redeploy'
+            "https://rancher.acdh-dev.oeaw.ac.at/p/c-zdbh8:p-s926c/workload/deployment:wibarab-website:wibarab-website?action=redeploy"
