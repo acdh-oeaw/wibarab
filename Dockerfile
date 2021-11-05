@@ -10,7 +10,8 @@ USER node
 
 COPY --chown=node:node package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile --silent --production --ignore-scripts && yarn cache clean
+# `--ignore-scripts` not added for `sharp` to compile.
+RUN yarn install --frozen-lockfile --silent --production && yarn cache clean
 
 # build
 FROM base AS build
