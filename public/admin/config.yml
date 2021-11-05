@@ -8,7 +8,7 @@ backend:
   name: github
   repo: stefanprobst/wibarab
   branch: main
-  base_url: https://wibarab.vercel.app
+  base_url: https://wibarab.acdh-dev.oeaw.ac.at
   auth_endpoint: api/auth/github
   auth_scope: public_repo
 
