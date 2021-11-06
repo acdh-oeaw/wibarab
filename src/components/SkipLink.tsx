@@ -12,9 +12,23 @@ export interface SkipLinkProps {
 export function SkipLink(props: SkipLinkProps): JSX.Element {
   const id = props.id ?? defaultId
 
+  function moveFocus() {
+    /**
+     * Fragment identifier links do not move focus to the target in Firefox.
+     */
+    document.getElementById(id)?.focus()
+  }
+
   return (
     <Link href={{ hash: id }}>
-      <a className="skip-link">{props.children}</a>
+      <a
+        /** This `href` is just here to silence linter warnings. */
+        href={`#${id}`}
+        className="skip-link"
+        onClick={moveFocus}
+      >
+        {props.children}
+      </a>
     </Link>
   )
 }
