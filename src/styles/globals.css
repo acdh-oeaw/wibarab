@@ -28,7 +28,7 @@ body,
 }
 
 html:focus-within {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 [hidden] {
