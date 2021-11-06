@@ -5,30 +5,28 @@ import { useEffect, useState } from 'react'
 import { Svg as MoonIcon } from '~/public/assets/icons/moon.svg'
 import { Svg as SunIcon } from '~/public/assets/icons/sun.svg'
 
-export const themes = ['light', 'dark'] as const
+export const themes = { light: 'light', dark: 'dark' } as const
 
-export type Theme = typeof themes[number]
+export type Theme = keyof typeof themes
 
-const themeKey = '__theme__'
+const dataAttribute = 'theme'
+const localStorageKey = '__theme__'
 
 function isValidTheme(theme: string): theme is Theme {
-  return themes.includes(theme as Theme)
+  return Object.prototype.hasOwnProperty.call(themes, theme)
 }
 
 const themeStore = {
   get() {
-    const theme = localStorage.getItem(themeKey)
+    const theme =
+      (document.documentElement.dataset[dataAttribute] as Theme | undefined) ??
+      localStorage.getItem(localStorageKey)
     if (theme == null || !isValidTheme(theme)) return null
     return theme
   },
   set(theme: Theme) {
-    localStorage.setItem(themeKey, theme)
-
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
+    document.documentElement.dataset[dataAttribute] = theme
+    localStorage.setItem(localStorageKey, theme)
   },
 }
 
@@ -36,7 +34,7 @@ export function ThemeToggleButton(): JSX.Element | null {
   const [theme, setTheme] = useState<Theme | null>(null)
 
   useEffect(() => {
-    setTheme(themeStore.get() ?? 'light')
+    setTheme(themeStore.get() ?? themes.light)
   }, [])
 
   useEffect(() => {
@@ -56,7 +54,7 @@ export function ThemeToggleButton(): JSX.Element | null {
 
   function onToggleTheme() {
     setTheme((currentTheme) => {
-      return currentTheme === 'light' ? 'dark' : 'light'
+      return currentTheme === themes.light ? themes.dark : themes.light
     })
   }
 
@@ -79,12 +77,12 @@ export function InitialThemeScript(): JSX.Element {
   )
 }
 
-const initialThemeScript = `const theme = localStorage.getItem('${themeKey}')
-if (theme != null) {
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark')
-  }
-} else if (matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.documentElement.classList.add('dark')
-  localStorage.setItem('${themeKey}', 'dark')
+const initialThemeScript = `const theme = localStorage.getItem('${localStorageKey}')
+if (
+  theme === '${themes.dark}' ||
+  matchMedia('(prefers-color-scheme: ${themes.dark})').matches
+) {
+  document.documentElement.dataset[${dataAttribute}] = '${themes.dark}'
+} else {
+  document.documentElement.dataset[${dataAttribute}] = '${themes.light}'
 }`

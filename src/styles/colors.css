@@ -7,7 +7,7 @@
   --color-glow: var(--color-accent);
 }
 
-:root.dark {
+:root[data-theme='dark'] {
   --color-background: hsl(355deg 16% 10%);
   --color-text: hsl(40deg 52% 80%);
   --color-text-highlighted: hsl(40deg 52% 88%);
