@@ -34,6 +34,8 @@ export default function App(props: AppProps): JSX.Element {
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
       </Head>
       <InitialThemeScript />
       <PageLayout pageProps={pageProps}>{getLayout(<Component {...pageProps} />)}</PageLayout>
