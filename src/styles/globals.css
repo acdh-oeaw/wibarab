@@ -28,6 +28,8 @@ body,
 }
 
 html:focus-within {
+  /* Doesn't work well in Firefox on client-side transitions. */
+
   /* scroll-behavior: smooth; */
 }
 
