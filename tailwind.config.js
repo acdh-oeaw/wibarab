@@ -36,6 +36,7 @@ module.exports = {
           DEFAULT: {
             css: {
               color: theme('colors.text'),
+              fontSize: theme('fontSize.size-text'),
               a: {
                 color: theme('colors.text'),
                 '&:hover': {
@@ -50,6 +51,18 @@ module.exports = {
               },
               'h1, h2, h3, h4': {
                 color: theme('colors.text'),
+              },
+              h1: {
+                fontSize: theme('fontSize.size-title'),
+              },
+              h2: {
+                fontSize: theme('fontSize.size-lead-in'),
+              },
+              h3: {
+                fontSize: theme('fontSize.size-heading'),
+              },
+              h4: {
+                fontSize: theme('fontSize.size-text'),
               },
             },
           },

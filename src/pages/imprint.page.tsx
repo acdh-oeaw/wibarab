@@ -44,10 +44,7 @@ export default function ImprintPage(props: ImprintPageProps): JSX.Element {
         <PageHeroTitle>Imprint</PageHeroTitle>
       </PageHeroSection>
       <PageSection>
-        <div
-          dangerouslySetInnerHTML={{ __html: imprintHtml }}
-          className="prose prose-lg max-w-none"
-        />
+        <div dangerouslySetInnerHTML={{ __html: imprintHtml }} className="prose max-w-none" />
       </PageSection>
     </PageMainContent>
   )
