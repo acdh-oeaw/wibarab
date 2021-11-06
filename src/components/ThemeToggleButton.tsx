@@ -62,7 +62,7 @@ export function ThemeToggleButton(): JSX.Element | null {
     <button
       onClick={onToggleTheme}
       aria-label="Toggle theme"
-      className="text-text hover:text-text-highlighted focus-visible:text-text-highlighted"
+      className="py-2 text-text hover:text-text-highlighted focus-visible:text-text-highlighted"
     >
       <Icon aria-hidden width={20} height={20} />
     </button>
