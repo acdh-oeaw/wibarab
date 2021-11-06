@@ -72,7 +72,7 @@ export function ThemeToggleButton(): JSX.Element | null {
 export function InitialThemeScript(): JSX.Element {
   return (
     <Head>
-      <script dangerouslySetInnerHTML={{ __html: initialThemeScript }} type="module" />
+      <script dangerouslySetInnerHTML={{ __html: initialThemeScript }} />
     </Head>
   )
 }
