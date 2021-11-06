@@ -2,7 +2,7 @@
 const pluginTypography = require('@tailwindcss/typography')
 
 module.exports = {
-  purge: ['src/**/*.tsx', 'src/styles/**/*.css'],
+  content: ['src/**/*.tsx', 'src/styles/**/*.css'],
   darkMode: false,
   theme: {
     extend: {

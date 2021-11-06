@@ -29,12 +29,7 @@ export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
       </ArticleHeaderSection>
       <PageSection>
         <div className="mb-6 bleed">
-          <img
-            src={featuredImage}
-            alt=""
-            className="object-cover w-full rounded"
-            style={{ aspectRatio: '16/10' }}
-          />
+          <img src={featuredImage} alt="" className="object-cover w-full rounded aspect-[16/10]" />
         </div>
         <div className="grid text-lg leading-8 text-text gap-y-6">{props.children}</div>
       </PageSection>
