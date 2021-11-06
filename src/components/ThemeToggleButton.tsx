@@ -82,7 +82,7 @@ if (
   theme === '${themes.dark}' ||
   matchMedia('(prefers-color-scheme: ${themes.dark})').matches
 ) {
-  document.documentElement.dataset[${dataAttribute}] = '${themes.dark}'
+  document.documentElement.dataset['${dataAttribute}'] = '${themes.dark}'
 } else {
-  document.documentElement.dataset[${dataAttribute}] = '${themes.light}'
+  document.documentElement.dataset['${dataAttribute}'] = '${themes.light}'
 }`

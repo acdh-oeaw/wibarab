@@ -24,7 +24,13 @@
     )
     [content-end] minmax(0, 1rem) [bleed-end] 1fr [full-bleed-end];
   row-gap: 1.5rem;
-  column-gap: 1.5rem;
+  column-gap: 0.5rem;
+}
+
+@media (min-width: 480px) {
+  .page-section {
+    column-gap: 1.5rem;
+  }
 }
 
 :where(.page-section) > * {

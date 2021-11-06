@@ -1,3 +1,7 @@
 :root {
   --font-family-ui: 'Noto Sans Display', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-size-title: clamp(2.5rem, 4.2vw + 1.7rem, 3.75rem);
+  --font-size-lead-in: clamp(1.35rem, 0.5vw + 1.3rem, 1.5rem);
+  --font-size-heading: clamp(1.35rem, 0.5vw + 1.3rem, 1.5rem);
+  --font-size-text: clamp(1.05rem, 0.2vw + 1rem, 1.125rem);
 }

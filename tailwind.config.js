@@ -17,6 +17,20 @@ module.exports = {
         'text-highlighted': 'var(--color-text-highlighted)',
         'text-muted': 'var(--color-text-muted)',
       },
+      fontSize: {
+        'size-title': 'var(--font-size-title)',
+        'size-lead-in': 'var(--font-size-lead-in)',
+        'size-heading': 'var(--font-size-heading)',
+        'size-text': 'var(--font-size-text)',
+      },
+      screens: {
+        xs: '30rem',
+        sm: '40rem',
+        md: '48rem',
+        lg: '64rem',
+        xl: '80ren',
+        '2xl': '96rem',
+      },
       typography(/** @type {(key: string) => string} */ theme) {
         return {
           DEFAULT: {

@@ -21,7 +21,7 @@ export function PageNavigation(): JSX.Element {
               <a
                 aria-current={isCurrentPage ? 'page' : undefined}
                 className={cx(
-                  'py-2 border-b border-transparent hover:text-text-highlighted focus-visible:text-text-highlighted',
+                  'py-2 relative after:absolute after:-inset-x-2 after:inset-y-0 border-b border-transparent hover:text-text-highlighted focus-visible:text-text-highlighted',
                   isCurrentPage && 'border-current',
                 )}
               >

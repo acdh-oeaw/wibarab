@@ -6,7 +6,7 @@ export interface PageSectionTitleProps {
 
 export function PageSectionTitle(props: PageSectionTitleProps): JSX.Element {
   return (
-    <h2 className="pb-2 text-2xl font-medium border-b border-text-highlighted text-text-highlighted glow">
+    <h2 className="pb-2 font-medium border-b text-size-heading border-text-highlighted text-text-highlighted glow">
       {props.children}
     </h2>
   )

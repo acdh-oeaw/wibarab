@@ -40,7 +40,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </PageHeroLeadIn>
       </PageHeroSection>
       <PageSection>
-        <p className="text-lg leading-8 text-text">
+        <p className="leading-8 text-size-text text-text">
           More than 350 million people speak Arabic in linguistic settings that are for the most
           part characterised by a high degree of diglossia. From Iran to Mauretania, countless
           spoken varieties are in use, which will be investigated in the ERC project WIBARAB. A
@@ -57,7 +57,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
           and patriarchal social patterns helps to explain the linguistic conservatism of Bedouin
           dialects.
         </p>
-        <p className="text-lg leading-8 text-text">
+        <p className="leading-8 text-size-text text-text">
           As part of the project, the ACDH-CH will further develop and refine its text-technological
           stack and take care of data modelling, corpus design, the implementation of the database,
           the publication platform and long-term preservation. The database will allow for efficient
@@ -76,7 +76,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         <AboutSection
           components={{
             p: (props) => {
-              return <p className="text-lg leading-8 text-text" {...props} />
+              return <p className="leading-8 text-size-text text-text" {...props} />
             },
           }}
         />
@@ -97,7 +97,7 @@ function TeamMembersList(props: TeamMembersListProps) {
   const { team } = props
 
   return (
-    <ul className="grid grid-cols-2 gap-x-6 gap-y-12">
+    <ul className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-x-6 gap-y-12">
       {team.map((teamMember) => {
         return (
           <li key={teamMember.name}>

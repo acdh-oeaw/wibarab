@@ -1,10 +1,13 @@
 :root {
-  --color-background: hsl(44deg 70% 68%); /* hsl(40deg 52% 72%) */
+  --color-background: hsl(44deg 70% 68%);
   --color-text: hsl(355deg 16% 34%);
   --color-text-highlighted: hsl(355deg 16% 26%);
   --color-text-muted: hsl(355deg 16% 42%);
   --color-accent: hsl(354deg 50% 74%);
   --color-glow: var(--color-accent);
+  --color-focus-ring: var(--color-text-highlighted);
+  --color-selection-background: var(--color-text-muted);
+  --color-selection-text: var(--color-background);
 }
 
 :root[data-theme='dark'] {
@@ -14,4 +17,7 @@
   --color-text-muted: hsl(40deg 52% 72%);
   --color-accent: hsl(44deg 76% 63%);
   --color-glow: var(--color-accent);
+  --color-focus-ring: var(--color-text-highlighted);
+  --color-selection-background: var(--color-text-muted);
+  --color-selection-text: var(--color-background);
 }

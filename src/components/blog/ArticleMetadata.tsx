@@ -9,7 +9,7 @@ export function ArticleMedata(props: ArticleMetadataProps): JSX.Element {
   const { date } = props.metadata
 
   return (
-    <dl className="flex gap-1 text-sm text-text-muted">
+    <dl className="flex gap-1 text-sm leading-relaxed text-text-muted">
       <dt>Published on</dt>
       <dd>
         <time dateTime={date}>{formatDate(new Date(date))}</time>

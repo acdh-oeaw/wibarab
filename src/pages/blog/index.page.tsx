@@ -83,18 +83,18 @@ function ArticlePreview(props: ArticlePreviewProps) {
 
   return (
     <article className="grid py-12 gap-y-3">
-      <h3 className="text-2xl font-medium text-text-highlighted glow">
+      <h3 className="font-medium text-size-heading text-text-highlighted glow">
         <Link href={href}>
           <a>{article.title}</a>
         </Link>
       </h3>
-      <p className="text-lg leading-8 text-text-muted">{article.abstract}</p>
-      <footer className="flex items-center justify-between">
+      <p className="leading-relaxed text-size-text text-text-muted">{article.abstract}</p>
+      <footer className="flex flex-col gap-3 xs:items-center xs:justify-between xs:flex-row">
         <ArticlePreviewMetadata metadata={article} />
         <Link href={href}>
           <a
             aria-label={`Read article "${article.title}"`}
-            className="hover:text-text-highlighted focus-visible:text-text-highlighted"
+            className="text-sm hover:text-text-highlighted focus-visible:text-text-highlighted whitespace-nowrap"
           >
             Read more &raquo;
           </a>
@@ -111,7 +111,7 @@ function ArticlePreviewMetadata(props: ArticlePreviewMetadataProps) {
   const { authors } = props.metadata
 
   return (
-    <dl className="flex gap-1 text-sm text-text-muted">
+    <dl className="flex gap-1 text-sm leading-relaxed text-text-muted">
       {authors.length > 0 ? (
         <Fragment>
           <dt className="sr-only">Authors</dt>

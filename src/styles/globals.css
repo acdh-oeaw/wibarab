@@ -3,6 +3,9 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  transition: 150ms ease-in-out;
+  transition-property: background-color, border-color, color;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -12,14 +15,74 @@ body,
 }
 
 :root {
+  color-scheme: light dark;
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family-ui);
   line-height: 1.5;
+  overflow-wrap: break-word;
+  tab-size: 4;
+  text-rendering: optimizeSpeed;
+  text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
-a,
-button {
-  transition: 150ms ease-in-out;
-  transition-property: background-color, border-color, color;
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+[id] {
+  scroll-margin-block-start: 1em;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+:focus {
+  outline: 2px dashed var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+::selection {
+  background-color: var(--color-selection-background);
+  color: var(--color-selection-text);
+}
+
+#__next {
+  /* overflow: hidden scroll; */
+  isolation: isolate;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
