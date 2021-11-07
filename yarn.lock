@@ -1652,10 +1652,10 @@
     mri "^1.2.0"
     sharp "^0.29.2"
 
-"@stefanprobst/next-page-metadata@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@stefanprobst/next-page-metadata/-/next-page-metadata-2.0.4.tgz#fcda9d73f1953deab74366c34c5b77a0784a5279"
-  integrity sha512-IQ8/ddMTvGORStuusipzSx/+C/u/AE42CS1I4uUfy1MyiNaJpnjopkhxwj6NcE1EqI9nnRT5HcnOh+OLngHSlg==
+"@stefanprobst/next-page-metadata@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@stefanprobst/next-page-metadata/-/next-page-metadata-2.0.5.tgz#faab7808b739cb8543b919622af24b7a93d7e99f"
+  integrity sha512-34doPfaYucwo/PmWwgMUOHslaYPB017YCatT8QSs+LKYU4BeGbLlI8mDUD+68eIJCcM7AJeJtzTU0ZMyPz8cig==
   dependencies:
     react-schemaorg "^2.0.0"
     schema-dts "^1.0.0"
