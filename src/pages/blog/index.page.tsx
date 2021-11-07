@@ -8,6 +8,7 @@ import { PageHeroTitle } from '@/components/PageHeroTitle'
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 // import { PageSectionTitle } from '@/components/PageSectionTitle'
+import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import type { PageParams } from '@/lib/core/navigation/types'
 import { getArticlePreviews } from '@/lib/data/article'
 import type { ArticleMetadata } from '@/lib/data/types'
@@ -32,19 +33,22 @@ export default function BlogPage(props: BlogPageProps): JSX.Element {
   const { articles } = props
 
   return (
-    <PageMainContent>
-      <PageHeroSection>
-        <PageHeroTitle>Blog</PageHeroTitle>
-        <PageHeroLeadIn>
-          Research notes on the linguistic and socio-historical realities behind the millennia-old
-          dichotomous concept of nomadic and sedentary people in the Middle East and North Africa
-        </PageHeroLeadIn>
-      </PageHeroSection>
-      <PageSection>
-        {/* <PageSectionTitle>Articles</PageSectionTitle> */}
-        <ArticlesList articles={articles} />
-      </PageSection>
-    </PageMainContent>
+    <Fragment>
+      <PageMetadata title="Blog" />
+      <PageMainContent>
+        <PageHeroSection>
+          <PageHeroTitle>Blog</PageHeroTitle>
+          <PageHeroLeadIn>
+            Research notes on the linguistic and socio-historical realities behind the millennia-old
+            dichotomous concept of nomadic and sedentary people in the Middle East and North Africa
+          </PageHeroLeadIn>
+        </PageHeroSection>
+        <PageSection>
+          {/* <PageSectionTitle>Articles</PageSectionTitle> */}
+          <ArticlesList articles={articles} />
+        </PageSection>
+      </PageMainContent>
+    </Fragment>
   )
 }
 

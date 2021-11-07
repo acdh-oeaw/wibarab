@@ -35,17 +35,17 @@
   },
   "packageManager": "yarn@1",
   "engines": {
-    "node": "14.x",
+    "node": ">=14.17",
     "yarn": "1.x"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.0.0-rc.1",
-    "@stefanprobst/next-page-metadata": "^2.0.0",
+    "@stefanprobst/next-page-metadata": "^2.0.4",
     "@stefanprobst/next-svg": "^3.0.1",
     "clsx": "^1.1.1",
     "next": "^12.0.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0-alpha-ee069065d-20211105",
+    "react-dom": "^18.0.0-alpha-ee069065d-20211105",
     "remark-frontmatter": "^4.0.1",
     "sharp": "^0.29.2",
     "vfile": "^5.2.0",

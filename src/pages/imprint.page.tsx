@@ -1,9 +1,11 @@
 import type { GetStaticPropsResult } from 'next'
+import { Fragment } from 'react'
 
 import { PageHeroSection } from '@/components/PageHeroSection'
 import { PageHeroTitle } from '@/components/PageHeroTitle'
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
+import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import type { PageParams } from '@/lib/core/navigation/types'
 
 function createImprintUrl() {
@@ -39,13 +41,16 @@ export default function ImprintPage(props: ImprintPageProps): JSX.Element {
   const { imprintHtml } = props
 
   return (
-    <PageMainContent>
-      <PageHeroSection>
-        <PageHeroTitle>Imprint</PageHeroTitle>
-      </PageHeroSection>
-      <PageSection>
-        <div dangerouslySetInnerHTML={{ __html: imprintHtml }} className="prose max-w-none" />
-      </PageSection>
-    </PageMainContent>
+    <Fragment>
+      <PageMetadata nofollow noindex title="Imprint" />
+      <PageMainContent>
+        <PageHeroSection>
+          <PageHeroTitle>Imprint</PageHeroTitle>
+        </PageHeroSection>
+        <PageSection>
+          <div dangerouslySetInnerHTML={{ __html: imprintHtml }} className="prose max-w-none" />
+        </PageSection>
+      </PageMainContent>
+    </Fragment>
   )
 }

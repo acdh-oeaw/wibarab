@@ -44,7 +44,8 @@ export const siteMetadata: SiteMetadata = {
   url: baseUrl,
   title: 'What is bedouin-type Arabic?',
   shortTitle: 'WIBARAB',
-  description: '',
+  description:
+    'The linguistic and socio-historical realities behind the millennia-old dichotomous concept of nomadic and sedentary people in the Middle East and North Africa',
   favicon: {
     src: 'public/assets/images/logo-maskable.svg',
     maskable: true,
@@ -54,7 +55,5 @@ export const siteMetadata: SiteMetadata = {
     publicPath: '/android-chrome-512x512.png',
     alt: '',
   },
-  twitter: {
-    handle: '',
-  },
+  twitter: {},
 } as const
