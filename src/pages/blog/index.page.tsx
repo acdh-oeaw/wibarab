@@ -111,11 +111,11 @@ function ArticlePreviewMetadata(props: ArticlePreviewMetadataProps) {
   const { authors } = props.metadata
 
   return (
-    <dl className="flex gap-1 text-sm leading-relaxed text-text-muted">
+    <dl className="text-sm leading-relaxed text-text-muted">
       {authors.length > 0 ? (
         <Fragment>
-          <dt className="sr-only">Authors</dt>
-          <dd>
+          <dt className="inline sr-only">Authors</dt>
+          <dd className="inline">
             <span aria-hidden>By </span>
             {authors
               .map((author) => {

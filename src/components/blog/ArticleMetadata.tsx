@@ -9,9 +9,9 @@ export function ArticleMedata(props: ArticleMetadataProps): JSX.Element {
   const { date, authors } = props.metadata
 
   return (
-    <dl className="flex flex-wrap gap-1 text-sm leading-relaxed text-text-muted">
-      <dt className="sr-only">Authors</dt>
-      <dd>
+    <dl className="text-sm leading-relaxed text-text-muted">
+      <dt className="inline sr-only">Authors</dt>
+      <dd className="inline">
         <span aria-hidden>By </span>
         {authors
           .map((author) => {
@@ -22,8 +22,8 @@ export function ArticleMedata(props: ArticleMetadataProps): JSX.Element {
       <span aria-hidden className="mx-3">
         &bull;
       </span>
-      <dt className="whitespace-nowrap">Published on</dt>
-      <dd>
+      <dt className="inline whitespace-nowrap">Published on</dt>
+      <dd className="inline">
         <time dateTime={date}>{formatDate(new Date(date))}</time>
       </dd>
     </dl>
