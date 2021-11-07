@@ -11,6 +11,7 @@ import { toXml } from 'xast-util-to-xml'
 import { siteMetadata } from '../config/metadata.config'
 import { baseUrl } from '../config/site.config'
 import { articleExtension, blogFolderPath } from '../src/lib/data/data.config'
+import { getTeamMember } from '../src/lib/data/team'
 import type { ArticleMetadataRaw } from '../src/lib/data/types'
 import { log } from '../src/lib/utils/log'
 
@@ -32,7 +33,7 @@ async function getArticlesMetadata() {
         id: folderEntry.name.slice(0, -articleExtension.length),
         title: metadata.title,
         date: metadata.date,
-        authors: [],
+        authors: metadata.authors.map(getTeamMember),
         abstract: metadata.abstract,
       })
     }

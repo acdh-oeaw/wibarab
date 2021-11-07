@@ -7,14 +7,14 @@ import { PageHeroTitle } from '@/components/PageHeroTitle'
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import type { PageParams } from '@/lib/core/navigation/types'
-import type { ArticleRaw } from '@/lib/data/types'
+import type { Article } from '@/lib/data/types'
 
 export type ArticlePageLayoutParamsInput = Record<string, never>
 export type ArticlePageLayoutParams = PageParams<ArticlePageLayoutParamsInput>
 export interface ArticlePageLayoutProps {
   children?: ReactNode
   /** Added by `remark` plugin. */
-  metadata: ArticleRaw
+  metadata: Article
 }
 
 export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {

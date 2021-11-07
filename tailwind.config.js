@@ -3,7 +3,6 @@ const pluginTypography = require('@tailwindcss/typography')
 
 module.exports = {
   content: ['src/**/*.tsx', 'src/styles/**/*.css'],
-  darkMode: false,
   theme: {
     extend: {
       borderRadius: {

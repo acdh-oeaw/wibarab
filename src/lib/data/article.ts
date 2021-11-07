@@ -16,7 +16,8 @@ export async function getArticlePreviews(): Promise<Array<ArticleMetadata>> {
 
   for (const folderEntry of folderEntries) {
     if (folderEntry.isFile() && path.extname(folderEntry.name) === articleExtension) {
-      const article = await getArticlePreview(folderEntry.name.slice(0, -articleExtension.length))
+      const id = folderEntry.name.slice(0, -articleExtension.length)
+      const article = await getArticlePreview(id)
 
       articles.push(article)
     }

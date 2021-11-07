@@ -1,6 +1,10 @@
+import * as fs from 'fs'
+import * as path from 'path'
+
 import createNextSvgPlugin from '@stefanprobst/next-svg'
+import withParsedFrontmatter from '@stefanprobst/remark-extract-yaml-frontmatter'
+import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-frontmatter/mdx'
 import withFrontmatter from 'remark-frontmatter'
-import { remarkMdxFrontmatter as withMdxFrontmatter } from 'remark-mdx-frontmatter'
 
 /** @typedef {import('next').NextConfig} NextConfig */
 
@@ -48,6 +52,40 @@ const config = {
   poweredByHeader: false,
   reactStrictMode: true,
   webpack(config, options) {
+    /**
+     * This is mostly copied from 'src/lib/data/team.ts` because in `next.config.mjs` we cannot
+     * import typescript, and can only use synchronous functions.
+     */
+    function getTeamMembers() {
+      const teamExtension = '.json'
+      const teamFolderPath = path.join(process.cwd(), 'src', 'components', 'home', 'team')
+
+      const folderEntries = fs.readdirSync(teamFolderPath, { withFileTypes: true })
+
+      const team = new Map()
+
+      for (const folderEntry of folderEntries) {
+        if (folderEntry.isFile() && path.extname(folderEntry.name) === teamExtension) {
+          const id = folderEntry.name.slice(0, -teamExtension.length)
+          const filePath = path.join(teamFolderPath, folderEntry.name)
+          const metadata = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }))
+
+          const teamMember = {
+            id,
+            name: metadata.name,
+            bio: metadata.bio,
+            email: metadata.email,
+          }
+
+          team.set(id, teamMember)
+        }
+      }
+
+      return team
+    }
+
+    const team = getTeamMembers()
+
     config.module.rules.push({
       test: /\.mdx?$/,
       use: [
@@ -59,7 +97,20 @@ const config = {
             jsx: true,
             remarkPlugins: [
               withFrontmatter,
-              [withMdxFrontmatter, { name: 'metadata' }],
+              [
+                withParsedFrontmatter,
+                {
+                  transform(frontmatter) {
+                    return {
+                      ...frontmatter,
+                      authors: frontmatter.authors?.map((id) => {
+                        return team.get(id)
+                      }),
+                    }
+                  },
+                },
+              ],
+              withParsedFrontmatterExport,
               function withMdxLayout() {
                 return function transformer(tree, _file) {
                   tree.children.push({

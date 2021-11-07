@@ -47,7 +47,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "remark-frontmatter": "^4.0.1",
-    "remark-mdx-frontmatter": "^1.0.1",
     "sharp": "^0.29.2",
     "vfile": "^5.2.0",
     "vfile-matter": "^3.0.1"
@@ -61,6 +60,7 @@
     "@stefanprobst/eslint-config-next": "^4.0.1",
     "@stefanprobst/favicons": "^2.0.2",
     "@stefanprobst/prettier-config": "^2.0.0",
+    "@stefanprobst/remark-extract-yaml-frontmatter": "^2.2.1",
     "@stefanprobst/stylelint-config": "^2.0.0",
     "@stefanprobst/tsconfig": "^1.1.1",
     "@tailwindcss/typography": "^0.5.0-alpha.2",
