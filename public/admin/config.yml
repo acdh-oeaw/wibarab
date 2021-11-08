@@ -6,7 +6,7 @@ logo_url: /assets/images/logo.svg
 local_backend: true
 backend:
   name: github
-  repo: stefanprobst/wibarab
+  repo: acdh-oeaw/wibarab
   branch: main
   base_url: https://wibarab.acdh-dev.oeaw.ac.at
   auth_endpoint: api/auth/github
