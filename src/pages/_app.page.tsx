@@ -3,13 +3,13 @@ import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { PageLayout } from '@/components/PageLayout'
-import { InitialThemeScript } from '@/components/ThemeToggleButton'
+import { InitialThemeScript } from '@/lib/core/theme/InitialThemeScript'
 
 import 'tailwindcss/tailwind.css'
 import '@/styles/index.css'
 
 export interface GetLayout {
-  (page: JSX.Element): JSX.Element
+  (page: JSX.Element, pageProps: AppProps['pageProps']): JSX.Element
 }
 
 export type PageWithLayout<T = unknown> = NextAppProps<T>['Component'] & {
@@ -38,11 +38,11 @@ export default function App(props: AppProps): JSX.Element {
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
       </Head>
       <InitialThemeScript />
-      <PageLayout pageProps={pageProps}>{getLayout(<Component {...pageProps} />)}</PageLayout>
+      {getLayout(<Component {...pageProps} />, pageProps)}
     </Fragment>
   )
 }
 
-const getDefaultLayout: GetLayout = function getDefaultLayout(page) {
-  return page
+const getDefaultLayout: GetLayout = function getDefaultLayout(page, pageProps) {
+  return <PageLayout pageProps={pageProps}>{page}</PageLayout>
 }

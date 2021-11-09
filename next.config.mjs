@@ -88,6 +88,23 @@ const config = {
 
     config.module.rules.push({
       test: /\.mdx?$/,
+      include: path.join(process.cwd(), 'src', 'components'),
+      use: [
+        options.defaultLoaders.babel,
+        {
+          loader: '@mdx-js/loader',
+          /** @type {import('@mdx-js/loader').Options} */
+          options: {
+            jsx: true,
+            remarkPlugins: [withFrontmatter, withParsedFrontmatter, withParsedFrontmatterExport],
+          },
+        },
+      ],
+    })
+
+    config.module.rules.push({
+      test: /\.mdx?$/,
+      include: path.join(process.cwd(), 'src', 'pages', 'blog'),
       use: [
         options.defaultLoaders.babel,
         {
@@ -113,124 +130,116 @@ const config = {
               withParsedFrontmatterExport,
               function withMdxLayout() {
                 return function transformer(tree, _file) {
-                  tree.children.push({
-                    type: 'mdxjsEsm',
-                    data: {
-                      estree: {
-                        type: 'Program',
-                        sourceType: 'module',
-                        body: [
+                  const estree = {
+                    type: 'Program',
+                    body: [
+                      {
+                        type: 'ImportDeclaration',
+                        specifiers: [
                           {
-                            type: 'ImportDeclaration',
-                            specifiers: [
-                              {
-                                type: 'ImportSpecifier',
-                                imported: {
-                                  type: 'Identifier',
-                                  name: 'ArticlePageLayout',
-                                },
-                                local: {
-                                  type: 'Identifier',
-                                  name: 'PageLayout',
-                                },
-                              },
-                            ],
-                            source: {
-                              type: 'Literal',
-                              value: '@/components/blog/ArticlePageLayout',
-                              raw: "'@/components/blog/ArticlePageLayout'",
+                            type: 'ImportSpecifier',
+                            imported: {
+                              type: 'Identifier',
+                              name: 'ArticlePageLayout',
+                            },
+                            local: {
+                              type: 'Identifier',
+                              name: 'ArticlePageLayout',
                             },
                           },
-                          {
-                            type: 'ExpressionStatement',
-                            expression: {
-                              type: 'AssignmentExpression',
-                              operator: '=',
-                              left: {
-                                type: 'MemberExpression',
-                                object: {
-                                  type: 'Identifier',
-                                  name: 'MDXContent',
-                                },
-                                property: {
-                                  type: 'Identifier',
-                                  name: 'getLayout',
-                                },
-                                computed: false,
-                                optional: false,
-                              },
-                              right: {
-                                type: 'FunctionExpression',
-                                id: {
-                                  type: 'Identifier',
-                                  name: 'getLayout',
-                                },
-                                expression: false,
-                                generator: false,
-                                async: false,
-                                params: [
-                                  {
-                                    type: 'Identifier',
-                                    name: 'page',
+                        ],
+                        source: {
+                          type: 'Literal',
+                          value: '@/components/blog/ArticlePageLayout',
+                          raw: "'@/components/blog/ArticlePageLayout'",
+                        },
+                      },
+                      {
+                        type: 'ExportDefaultDeclaration',
+                        declaration: {
+                          type: 'FunctionDeclaration',
+                          id: {
+                            type: 'Identifier',
+                            name: 'Layout',
+                          },
+                          expression: false,
+                          generator: false,
+                          async: false,
+                          params: [
+                            {
+                              type: 'Identifier',
+                              name: 'props',
+                            },
+                          ],
+                          body: {
+                            type: 'BlockStatement',
+                            body: [
+                              {
+                                type: 'ReturnStatement',
+                                argument: {
+                                  type: 'JSXElement',
+                                  openingElement: {
+                                    type: 'JSXOpeningElement',
+                                    attributes: [
+                                      {
+                                        type: 'JSXAttribute',
+                                        name: {
+                                          type: 'JSXIdentifier',
+                                          name: 'metadata',
+                                        },
+                                        value: {
+                                          type: 'JSXExpressionContainer',
+                                          expression: {
+                                            type: 'Identifier',
+                                            name: 'metadata',
+                                          },
+                                        },
+                                      },
+                                    ],
+                                    name: {
+                                      type: 'JSXIdentifier',
+                                      name: 'ArticlePageLayout',
+                                    },
+                                    selfClosing: false,
                                   },
-                                ],
-                                body: {
-                                  type: 'BlockStatement',
-                                  body: [
+                                  closingElement: {
+                                    type: 'JSXClosingElement',
+                                    name: {
+                                      type: 'JSXIdentifier',
+                                      name: 'ArticlePageLayout',
+                                    },
+                                  },
+                                  children: [
                                     {
-                                      type: 'ReturnStatement',
-                                      argument: {
-                                        type: 'JSXElement',
-                                        openingElement: {
-                                          type: 'JSXOpeningElement',
-                                          attributes: [
-                                            {
-                                              type: 'JSXAttribute',
-                                              name: {
-                                                type: 'JSXIdentifier',
-                                                name: 'metadata',
-                                              },
-                                              value: {
-                                                type: 'JSXExpressionContainer',
-                                                expression: {
-                                                  type: 'Identifier',
-                                                  name: 'metadata',
-                                                },
-                                              },
-                                            },
-                                          ],
-                                          name: {
-                                            type: 'JSXIdentifier',
-                                            name: 'PageLayout',
-                                          },
-                                          selfClosing: false,
+                                      type: 'JSXExpressionContainer',
+                                      expression: {
+                                        type: 'MemberExpression',
+                                        object: {
+                                          type: 'Identifier',
+                                          name: 'props',
                                         },
-                                        closingElement: {
-                                          type: 'JSXClosingElement',
-                                          name: {
-                                            type: 'JSXIdentifier',
-                                            name: 'PageLayout',
-                                          },
+                                        property: {
+                                          type: 'Identifier',
+                                          name: 'children',
                                         },
-                                        children: [
-                                          {
-                                            type: 'JSXExpressionContainer',
-                                            expression: {
-                                              type: 'Identifier',
-                                              name: 'page',
-                                            },
-                                          },
-                                        ],
+                                        computed: false,
+                                        optional: false,
                                       },
                                     },
                                   ],
                                 },
                               },
-                            },
+                            ],
                           },
-                        ],
+                        },
                       },
-                    },
+                    ],
+                    sourceType: 'module',
+                  }
+
+                  tree.children.push({
+                    type: 'mdxjsEsm',
+                    data: { estree },
                   })
                 }
               },

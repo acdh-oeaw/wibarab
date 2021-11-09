@@ -48,6 +48,15 @@ module.exports = {
               strong: {
                 color: theme('colors.text'),
               },
+              blockquote: {
+                color: theme('colors.text'),
+              },
+              'ol > li::marker': {
+                color: theme('colors.text'),
+              },
+              'ul > li::marker': {
+                color: theme('colors.text'),
+              },
               'h1, h2, h3, h4': {
                 color: theme('colors.text'),
               },
@@ -62,6 +71,11 @@ module.exports = {
               },
               h4: {
                 fontSize: theme('fontSize.size-text'),
+              },
+              p: {
+                fontSize: theme('fontSize.size-text'),
+                color: theme('colors.text'),
+                lineHeight: theme('leading.8'),
               },
             },
           },

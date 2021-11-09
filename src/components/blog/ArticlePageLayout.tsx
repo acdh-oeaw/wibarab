@@ -21,7 +21,7 @@ export interface ArticlePageLayoutProps {
 }
 
 export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
-  const { title, leadIn, date, featuredImage, abstract } = props.metadata
+  const { title, leadIn, date, authors, featuredImage, abstract } = props.metadata
 
   return (
     <Fragment>
@@ -37,8 +37,11 @@ export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
           abstract: abstract,
           datePublished: date,
           image: featuredImage,
-          // author: authors.map(author => author.name).join(', ')
-          // creator,
+          author: authors
+            .map((author) => {
+              return author.name
+            })
+            .join(', '),
         }}
       />
       <PageMainContent>
@@ -55,7 +58,7 @@ export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
               className="object-cover w-full rounded aspect-[16/10]"
             />
           </div>
-          <div className="grid leading-8 text-size-text text-text gap-y-6">{props.children}</div>
+          <div className="prose max-w-none">{props.children}</div>
         </PageSection>
       </PageMainContent>
     </Fragment>

@@ -1,40 +1,17 @@
-import Head from 'next/head'
 import type { FC, SVGProps } from 'react'
 import { useEffect, useState } from 'react'
 
+import { themeStore } from '@/lib/core/theme/theme'
+import type { Theme } from '@/lib/core/theme/theme.config'
+import { themes } from '@/lib/core/theme/theme.config'
 import { Svg as MoonIcon } from '~/public/assets/icons/moon.svg'
 import { Svg as SunIcon } from '~/public/assets/icons/sun.svg'
-
-export const themes = { light: 'light', dark: 'dark' } as const
-
-export type Theme = keyof typeof themes
-
-const dataAttribute = 'theme'
-const localStorageKey = '__theme__'
-
-function isValidTheme(theme: string): theme is Theme {
-  return Object.prototype.hasOwnProperty.call(themes, theme)
-}
-
-const themeStore = {
-  get() {
-    const theme =
-      (document.documentElement.dataset[dataAttribute] as Theme | undefined) ??
-      localStorage.getItem(localStorageKey)
-    if (theme == null || !isValidTheme(theme)) return null
-    return theme
-  },
-  set(theme: Theme) {
-    document.documentElement.dataset[dataAttribute] = theme
-    localStorage.setItem(localStorageKey, theme)
-  },
-}
 
 export function ThemeToggleButton(): JSX.Element | null {
   const [theme, setTheme] = useState<Theme | null>(null)
 
   useEffect(() => {
-    setTheme(themeStore.get() ?? themes.light)
+    setTheme(themeStore.get())
   }, [])
 
   useEffect(() => {
@@ -68,21 +45,3 @@ export function ThemeToggleButton(): JSX.Element | null {
     </button>
   )
 }
-
-export function InitialThemeScript(): JSX.Element {
-  return (
-    <Head>
-      <script dangerouslySetInnerHTML={{ __html: initialThemeScript }} />
-    </Head>
-  )
-}
-
-const initialThemeScript = `const theme = localStorage.getItem('${localStorageKey}')
-if (
-  theme === '${themes.dark}' ||
-  matchMedia('(prefers-color-scheme: ${themes.dark})').matches
-) {
-  document.documentElement.dataset['${dataAttribute}'] = '${themes.dark}'
-} else {
-  document.documentElement.dataset['${dataAttribute}'] = '${themes.light}'
-}`

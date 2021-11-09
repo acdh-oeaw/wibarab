@@ -20,7 +20,6 @@ export interface ArticleMetadata extends Omit<ArticleMetadataRaw, 'authors'> {
 export interface ArticleRaw extends ArticleMetadataRaw {
   leadIn: string
   featuredImage: string
-  content: string
 }
 
 export interface Article extends Omit<ArticleRaw, 'authors'> {

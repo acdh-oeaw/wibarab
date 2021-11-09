@@ -8,6 +8,8 @@
   --color-focus-ring: var(--color-text-highlighted);
   --color-selection-background: var(--color-text-muted);
   --color-selection-text: var(--color-background);
+
+  color-scheme: light;
 }
 
 :root[data-theme='dark'] {
@@ -20,4 +22,6 @@
   --color-focus-ring: var(--color-text-highlighted);
   --color-selection-background: var(--color-text-muted);
   --color-selection-text: var(--color-background);
+
+  color-scheme: dark;
 }
