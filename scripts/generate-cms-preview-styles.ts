@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import { promises as fs, existsSync } from 'fs'
 import * as path from 'path'
 
 import autoprefixer from 'autoprefixer'
@@ -49,6 +49,10 @@ async function processCss(filePath: string) {
 }
 
 async function generate() {
+  if (!existsSync(outputFolderPath)) {
+    await fs.mkdir(outputFolderPath, { recursive: true })
+  }
+
   await writeFile(
     'index.css',
     await processCss(path.join(process.cwd(), 'src', 'styles', 'index.css')),
