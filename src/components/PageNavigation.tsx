@@ -17,17 +17,19 @@ export function PageNavigation(): JSX.Element {
           const isCurrentPage = href.pathname === router.pathname
 
           return (
-            <Link key={href.pathname} href={href}>
-              <a
-                aria-current={isCurrentPage ? 'page' : undefined}
-                className={cx(
-                  'py-2 relative after:absolute after:-inset-x-2 after:inset-y-0 border-b border-transparent hover:text-text-highlighted focus-visible:text-text-highlighted',
-                  isCurrentPage && 'border-current',
-                )}
-              >
-                {label}
-              </a>
-            </Link>
+            <li key={href.pathname}>
+              <Link href={href}>
+                <a
+                  aria-current={isCurrentPage ? 'page' : undefined}
+                  className={cx(
+                    'py-2 relative after:absolute after:-inset-x-2 after:inset-y-0 border-b border-transparent hover:text-text-highlighted focus-visible:text-text-highlighted',
+                    isCurrentPage && 'border-current',
+                  )}
+                >
+                  {label}
+                </a>
+              </Link>
+            </li>
           )
         })}
       </ul>
