@@ -15,10 +15,14 @@ export function ArticlePagePreview(props: ArticlePagePreviewProps): JSX.Element 
   const title = entry.getIn(['data', 'title'])
   const leadIn = entry.getIn(['data', 'leadIn'])
   const authors =
-    entry.getIn(['data', 'authors'])?.map((id: string) => {
-      const author = fieldsMetaData.getIn(['authors', 'team', id])
-      return author.toJS()
-    }) || []
+    entry
+      .getIn(['data', 'authors'])
+      ?.map((id: string) => {
+        const author = fieldsMetaData.getIn(['authors', 'team', id])
+        if (author == null) return null
+        return author.toJS()
+      })
+      .filter(Boolean) || []
   const date = entry.getIn(['data', 'date']) || new Date().toISOString()
   const content = entry.getIn(['data', 'body'])
   const featuredImage = String(getAsset(entry.getIn(['data', 'featuredImage'])))
