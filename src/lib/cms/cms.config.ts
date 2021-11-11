@@ -10,7 +10,7 @@ const collections = [blog, sections, team]
 
 export const config: CmsConfig = {
   load_config_file: false,
-  logo_url: '/assets/images/logo.svg',
+  logo_url: '/assets/cms/images/wibarab_final.png',
   local_backend: process.env['NEXT_PUBLIC_USE_LOCAL_CMS'] === 'true',
   backend: {
     name: 'github',
