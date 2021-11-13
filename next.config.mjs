@@ -5,6 +5,8 @@ import * as path from 'path'
 import createNextSvgPlugin from '@stefanprobst/next-svg'
 import withParsedFrontmatter from '@stefanprobst/remark-extract-yaml-frontmatter'
 import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-frontmatter/mdx'
+import { Parser } from 'acorn'
+import jsx from 'acorn-jsx'
 import withFrontmatter from 'remark-frontmatter'
 
 /** @typedef {import('next').NextConfig} NextConfig */
@@ -133,112 +135,16 @@ const config = {
               withParsedFrontmatterExport,
               function withMdxLayout() {
                 return function transformer(tree, _file) {
-                  const estree = {
-                    type: 'Program',
-                    body: [
-                      {
-                        type: 'ImportDeclaration',
-                        specifiers: [
-                          {
-                            type: 'ImportSpecifier',
-                            imported: {
-                              type: 'Identifier',
-                              name: 'ArticlePageLayout',
-                            },
-                            local: {
-                              type: 'Identifier',
-                              name: 'ArticlePageLayout',
-                            },
-                          },
-                        ],
-                        source: {
-                          type: 'Literal',
-                          value: '@/components/blog/ArticlePageLayout',
-                          raw: "'@/components/blog/ArticlePageLayout'",
-                        },
-                      },
-                      {
-                        type: 'ExportDefaultDeclaration',
-                        declaration: {
-                          type: 'FunctionDeclaration',
-                          id: {
-                            type: 'Identifier',
-                            name: 'Layout',
-                          },
-                          expression: false,
-                          generator: false,
-                          async: false,
-                          params: [
-                            {
-                              type: 'Identifier',
-                              name: 'props',
-                            },
-                          ],
-                          body: {
-                            type: 'BlockStatement',
-                            body: [
-                              {
-                                type: 'ReturnStatement',
-                                argument: {
-                                  type: 'JSXElement',
-                                  openingElement: {
-                                    type: 'JSXOpeningElement',
-                                    attributes: [
-                                      {
-                                        type: 'JSXAttribute',
-                                        name: {
-                                          type: 'JSXIdentifier',
-                                          name: 'metadata',
-                                        },
-                                        value: {
-                                          type: 'JSXExpressionContainer',
-                                          expression: {
-                                            type: 'Identifier',
-                                            name: 'metadata',
-                                          },
-                                        },
-                                      },
-                                    ],
-                                    name: {
-                                      type: 'JSXIdentifier',
-                                      name: 'ArticlePageLayout',
-                                    },
-                                    selfClosing: false,
-                                  },
-                                  closingElement: {
-                                    type: 'JSXClosingElement',
-                                    name: {
-                                      type: 'JSXIdentifier',
-                                      name: 'ArticlePageLayout',
-                                    },
-                                  },
-                                  children: [
-                                    {
-                                      type: 'JSXExpressionContainer',
-                                      expression: {
-                                        type: 'MemberExpression',
-                                        object: {
-                                          type: 'Identifier',
-                                          name: 'props',
-                                        },
-                                        property: {
-                                          type: 'Identifier',
-                                          name: 'children',
-                                        },
-                                        computed: false,
-                                        optional: false,
-                                      },
-                                    },
-                                  ],
-                                },
-                              },
-                            ],
-                          },
-                        },
-                      },
-                    ],
-                    sourceType: 'module',
-                  }
+                  const jsxParser = Parser.extend(jsx())
+
+                  const estree = jsxParser.parse(
+                    `
+                    import { ArticlePageLayout } from '@/components/blog/ArticlePageLayout';
+                    export default function Layout(props) {
+                      return <ArticlePageLayout metadata={metadata} {...props} />;
+                    }`,
+                    { sourceType: 'module', ecmaVersion: 2020 },
+                  )
 
                   tree.children.push({
                     type: 'mdxjsEsm',
