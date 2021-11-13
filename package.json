@@ -8,7 +8,7 @@
     "cms:server": "netlify-cms-proxy-server",
     "dev": "next dev",
     "format": "prettier . --list-different --ignore-path .gitignore --loglevel warn",
-    "formatfix": "yarn run format --write",
+    "format:fix": "yarn run format --write",
     "generate:cms-preview-styles": "cross-env NODE_OPTIONS='--experimental-vm-modules' npx tsm scripts/generate-cms-preview-styles.ts",
     "generate:favicons": "cross-env NODE_OPTIONS='--experimental-vm-modules' npx tsm scripts/generate-favicons.ts",
     "generate:feed": "cross-env NODE_OPTIONS='--experimental-vm-modules' npx tsm scripts/generate-feed.ts",
