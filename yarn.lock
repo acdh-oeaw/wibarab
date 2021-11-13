@@ -1860,6 +1860,13 @@
     "@svgr/webpack" "^5.5.0"
     url-loader "^4.1.1"
 
+"@stefanprobst/next-theme@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@stefanprobst/next-theme/-/next-theme-1.0.0.tgz#be9ca9f1440701cdd20cd228975b5659d80550c6"
+  integrity sha512-nq627aDdgNNf7D6PENHvAJEnQE+CcbxZcEGR9OMZGJYnqAOyUbA2+hovQgxP4vfJiXOevz8VJlQsjHClxRbq6g==
+  dependencies:
+    "@stefanprobst/assert" "^1.0.1"
+
 "@stefanprobst/prettier-config@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@stefanprobst/prettier-config/-/prettier-config-2.0.0.tgz#e5d84fec0288ee69e3fe0337270c531eaf95d8c8"

@@ -1,7 +1,7 @@
+import type { Theme } from '@stefanprobst/next-theme'
+import { useTheme } from '@stefanprobst/next-theme'
 import type { FC, SVGProps } from 'react'
 
-import type { Theme } from '@/lib/core/theme/theme.config'
-import { useTheme } from '@/lib/core/theme/useTheme'
 import { Svg as MoonIcon } from '~/public/assets/icons/moon.svg'
 import { Svg as SunIcon } from '~/public/assets/icons/sun.svg'
 

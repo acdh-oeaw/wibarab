@@ -44,6 +44,7 @@
     "@stefanprobst/next-error-boundary": "^3.0.2",
     "@stefanprobst/next-page-metadata": "^2.0.5",
     "@stefanprobst/next-svg": "^3.0.1",
+    "@stefanprobst/next-theme": "^1.0.0",
     "@stefanprobst/remark-extract-yaml-frontmatter": "^2.2.1",
     "clsx": "^1.1.1",
     "netlify-cms-app": "^2.15.58",

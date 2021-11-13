@@ -1,9 +1,9 @@
+import { InitialThemeScript } from '@stefanprobst/next-theme'
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { PageLayout } from '@/components/PageLayout'
-import { InitialThemeScript } from '@/lib/core/theme/InitialThemeScript'
 
 import 'tailwindcss/tailwind.css'
 import '@/styles/index.css'
