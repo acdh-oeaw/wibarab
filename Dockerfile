@@ -18,7 +18,7 @@ FROM base AS build
 
 RUN yarn install --frozen-lockfile --silent --ignore-scripts
 
-COPY --chown=node:node tsconfig.json app-env.d.ts next-env.d.ts next.config.mjs ./
+COPY --chown=node:node tsconfig.json app.d.ts next-env.d.ts next.config.mjs ./
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node config ./config
 COPY --chown=node:node tailwind.config.js ./

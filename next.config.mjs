@@ -1,6 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
+/* @ts-expect-error Missing module declaration. */
 import createNextSvgPlugin from '@stefanprobst/next-svg'
 import withParsedFrontmatter from '@stefanprobst/remark-extract-yaml-frontmatter'
 import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-frontmatter/mdx'
@@ -48,7 +49,7 @@ const config = {
       },
     ]
   },
-  pageExtensions: ['page.tsx', 'api.ts', 'md', 'mdx'],
+  pageExtensions: ['page.tsx', 'mdx', 'api.ts'],
   poweredByHeader: false,
   reactStrictMode: true,
   webpack(config, options) {
@@ -117,10 +118,12 @@ const config = {
               [
                 withParsedFrontmatter,
                 {
-                  transform(frontmatter) {
+                  transform(
+                    /** @type {import('@/lib/data/types').ArticleMetadataRaw} */ frontmatter,
+                  ) {
                     return {
                       ...frontmatter,
-                      authors: frontmatter.authors?.map((id) => {
+                      authors: frontmatter.authors.map((id) => {
                         return team.get(id)
                       }),
                     }

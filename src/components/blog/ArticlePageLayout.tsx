@@ -58,7 +58,7 @@ export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
               className="object-cover w-full rounded aspect-[16/10]"
             />
           </div>
-          <div className="prose max-w-none">{props.children}</div>
+          <div className="prose">{props.children}</div>
         </PageSection>
       </PageMainContent>
     </Fragment>

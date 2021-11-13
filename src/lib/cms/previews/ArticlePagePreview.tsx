@@ -33,7 +33,7 @@ export function ArticlePagePreview(props: ArticlePagePreviewProps): JSX.Element 
   return (
     <Preview>
       <ArticlePageLayout metadata={metadata}>
-        <Markdown className="prose max-w-none" markdown={content} />
+        <Markdown className="prose" markdown={content} />
       </ArticlePageLayout>
       <Spacer />
     </Preview>

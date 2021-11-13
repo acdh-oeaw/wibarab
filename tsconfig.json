@@ -12,7 +12,7 @@
   },
   "include": [
     "next-env.d.ts",
-    "app-env.d.ts",
+    "app.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.config.mjs",

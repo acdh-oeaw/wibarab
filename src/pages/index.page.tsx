@@ -45,7 +45,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
           </PageHeroLeadIn>
         </PageHeroSection>
         <PageSection>
-          <div className="prose max-w-none">
+          <div className="prose">
             <p>
               More than 350 million people speak Arabic in linguistic settings that are for the most
               part characterised by a high degree of diglossia. From Iran to Mauretania, countless
@@ -81,7 +81,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         <Spacer />
         <PageSection>
           <PageSectionTitle>{metadata.title}</PageSectionTitle>
-          <div className="prose max-w-none">
+          <div className="prose">
             <AboutSection />
           </div>
         </PageSection>

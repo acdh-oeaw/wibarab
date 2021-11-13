@@ -36,6 +36,7 @@ module.exports = {
             css: {
               color: theme('colors.text'),
               fontSize: theme('fontSize.size-text'),
+              maxWidth: 'none',
               a: {
                 color: theme('colors.text'),
                 '&:hover': {
@@ -45,37 +46,38 @@ module.exports = {
                   color: theme('colors.text-highlighted'),
                 },
               },
-              strong: {
-                color: theme('colors.text'),
-              },
               blockquote: {
                 color: theme('colors.text'),
               },
-              'ol > li::marker': {
-                color: theme('colors.text'),
-              },
-              'ul > li::marker': {
-                color: theme('colors.text'),
-              },
-              'h1, h2, h3, h4': {
-                color: theme('colors.text'),
-              },
               h1: {
+                color: theme('colors.text'),
                 fontSize: theme('fontSize.size-title'),
               },
               h2: {
+                color: theme('colors.text'),
                 fontSize: theme('fontSize.size-lead-in'),
               },
               h3: {
+                color: theme('colors.text'),
                 fontSize: theme('fontSize.size-heading'),
               },
               h4: {
+                color: theme('colors.text'),
                 fontSize: theme('fontSize.size-text'),
+              },
+              'ol > li::marker': {
+                color: theme('colors.text'),
               },
               p: {
                 fontSize: theme('fontSize.size-text'),
                 color: theme('colors.text'),
                 lineHeight: theme('leading.8'),
+              },
+              strong: {
+                color: theme('colors.text'),
+              },
+              'ul > li::marker': {
+                color: theme('colors.text'),
               },
             },
           },

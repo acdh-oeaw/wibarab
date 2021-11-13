@@ -19,7 +19,7 @@ export function SectionPreview(props: SectionPreviewProps): JSX.Element {
       <Spacer />
       <PageSection>
         <PageSectionTitle>{title}</PageSectionTitle>
-        <Markdown className="prose max-w-none" markdown={content} />
+        <Markdown className="prose" markdown={content} />
       </PageSection>
       <Spacer />
     </Preview>
