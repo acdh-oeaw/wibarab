@@ -20,9 +20,7 @@ const CMS = dynamic(
 
     CMS.init({ config })
 
-    return function () {
-      return null
-    }
+    return Fragment
   },
   {
     ssr: false,
