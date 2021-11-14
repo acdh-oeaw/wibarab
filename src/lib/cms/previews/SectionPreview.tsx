@@ -3,7 +3,7 @@ import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import { PageSection } from '@/components/PageSection'
 import { PageSectionTitle } from '@/components/PageSectionTitle'
 import { Spacer } from '@/components/Spacer'
-import { Markdown } from '@/lib/cms/components/Markdown'
+import { Mdx } from '@/lib/cms/components/Mdx'
 import { Preview } from '@/lib/cms/previews/Preview'
 
 export type SectionPreviewProps = PreviewTemplateComponentProps
@@ -19,7 +19,7 @@ export function SectionPreview(props: SectionPreviewProps): JSX.Element {
       <Spacer />
       <PageSection>
         <PageSectionTitle>{title}</PageSectionTitle>
-        <Markdown className="prose" markdown={content} />
+        <Mdx className="prose" mdx={content} />
       </PageSection>
       <Spacer />
     </Preview>

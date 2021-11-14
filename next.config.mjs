@@ -8,6 +8,7 @@ import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-front
 import { Parser } from 'acorn'
 import jsx from 'acorn-jsx'
 import withFrontmatter from 'remark-frontmatter'
+import withGfm from 'remark-gfm'
 
 /** @typedef {import('next').NextConfig} NextConfig */
 
@@ -99,7 +100,13 @@ const config = {
           /** @type {import('@mdx-js/loader').Options} */
           options: {
             jsx: true,
-            remarkPlugins: [withFrontmatter, withParsedFrontmatter, withParsedFrontmatterExport],
+            remarkPlugins: [
+              withFrontmatter,
+              withParsedFrontmatter,
+              withParsedFrontmatterExport,
+              withGfm,
+            ],
+            rehypePlugins: [],
           },
         },
       ],
@@ -152,7 +159,9 @@ const config = {
                   })
                 }
               },
+              withGfm,
             ],
+            rehypePlugins: [],
           },
         },
       ],

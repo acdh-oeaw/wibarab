@@ -2,7 +2,7 @@ import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 
 import { ArticlePageLayout } from '@/components/blog/ArticlePageLayout'
 import { Spacer } from '@/components/Spacer'
-import { Markdown } from '@/lib/cms/components/Markdown'
+import { Mdx } from '@/lib/cms/components/Mdx'
 import { Preview } from '@/lib/cms/previews/Preview'
 
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
@@ -33,7 +33,7 @@ export function ArticlePagePreview(props: ArticlePagePreviewProps): JSX.Element 
   return (
     <Preview>
       <ArticlePageLayout metadata={metadata}>
-        <Markdown className="prose" markdown={content} />
+        <Mdx className="prose" mdx={content} />
       </ArticlePageLayout>
       <Spacer />
     </Preview>
