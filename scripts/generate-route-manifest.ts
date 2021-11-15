@@ -1,7 +1,6 @@
+import config from '@stefanprobst/prettier-config'
 import { promises as fs } from 'fs'
 import * as path from 'path'
-
-import config from '@stefanprobst/prettier-config'
 import prettier from 'prettier'
 
 import { log } from '../src/lib/utils/log'

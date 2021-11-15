@@ -14,13 +14,13 @@ export interface ArticleMetadataRaw {
   featuredImage: string
 }
 
-export interface ArticlePreview extends Pick<ArticleMetadataRaw, 'title' | 'date' | 'abstract'> {
+export interface ArticlePreview extends Pick<ArticleMetadataRaw, 'abstract' | 'date' | 'title'> {
   id: string
   authors: Array<Pick<TeamMember, 'name'>>
 }
 
 export interface ArticleMetadata
-  extends Pick<ArticleMetadataRaw, 'title' | 'date' | 'leadIn' | 'featuredImage' | 'abstract'> {
+  extends Pick<ArticleMetadataRaw, 'abstract' | 'date' | 'featuredImage' | 'leadIn' | 'title'> {
   id: string
   authors: Array<Pick<TeamMember, 'name'>>
 }

@@ -1,7 +1,6 @@
 import { promises as fs } from 'fs'
-import * as path from 'path'
-
 import * as YAML from 'js-yaml'
+import * as path from 'path'
 import { VFile } from 'vfile'
 import { matter } from 'vfile-matter'
 import type { Channel, Entry } from 'xast-util-feed'

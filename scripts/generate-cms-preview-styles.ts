@@ -1,9 +1,8 @@
-import { promises as fs, existsSync } from 'fs'
-import * as path from 'path'
-
 import autoprefixer from 'autoprefixer'
+import { existsSync, promises as fs } from 'fs'
+import * as path from 'path'
+import type { AcceptedPlugin, Plugin, Result } from 'postcss'
 import postcss from 'postcss'
-import type { Result, AcceptedPlugin, Plugin } from 'postcss'
 import atImport from 'postcss-import'
 import tailwind from 'tailwindcss'
 import { createMatchPath, loadConfig } from 'tsconfig-paths'

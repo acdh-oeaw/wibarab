@@ -1,12 +1,12 @@
+import 'tailwindcss/tailwind.css'
+import '@/styles/index.css'
+
 import { InitialThemeScript } from '@stefanprobst/next-theme'
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { PageLayout } from '@/components/PageLayout'
-
-import 'tailwindcss/tailwind.css'
-import '@/styles/index.css'
 
 export interface GetLayout {
   (page: JSX.Element, pageProps: AppProps['pageProps']): JSX.Element

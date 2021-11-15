@@ -1,10 +1,10 @@
 import { baseUrl } from '~/config/site.config'
 
-type Primitive = string | number | boolean | null | undefined
+type Primitive = boolean | number | string | null | undefined
 
 export interface UrlInit {
   pathname: string
-  searchParams?: Record<string, Primitive | Array<Primitive>>
+  searchParams?: Record<string, Array<Primitive> | Primitive>
   hash?: string
 }
 
