@@ -7,7 +7,7 @@ import prettier from 'prettier'
 import { log } from '../src/lib/utils/log'
 
 const srcFolderPath = path.join(process.cwd(), 'src')
-const pageExtension = '.page.tsx'
+const pageExtensions = ['.page.tsx', '.page.template.tsx']
 const pagesFolder = path.join(srcFolderPath, 'pages')
 const internalPages = ['_app', '_document', '_error', '404', '500', '_middleware']
 const outputFileName = 'routes.ts'
@@ -15,18 +15,21 @@ const outputPath = path.join('lib', 'core', 'navigation')
 const absoluteOutputPath = path.join(srcFolderPath, outputPath, outputFileName)
 
 async function generate(): Promise<void> {
-  const absoluteFilePaths: Array<string> = []
+  const absoluteFilePaths: Array<[string, string]> = []
 
   async function readFolder(currentFolder: string) {
     const entries = await fs.readdir(currentFolder, { withFileTypes: true })
 
     for (const entry of entries) {
       if (entry.isFile()) {
-        if (
-          entry.name.endsWith(pageExtension) &&
-          !internalPages.includes(entry.name.slice(0, -pageExtension.length))
-        ) {
-          absoluteFilePaths.push(path.join(currentFolder, entry.name))
+        for (const pageExtension of pageExtensions) {
+          if (
+            entry.name.endsWith(pageExtension) &&
+            !internalPages.includes(entry.name.slice(0, -pageExtension.length))
+          ) {
+            absoluteFilePaths.push([path.join(currentFolder, entry.name), pageExtension])
+            break
+          }
         }
       } else if (entry.isDirectory()) {
         await readFolder(path.join(currentFolder, entry.name))
@@ -43,7 +46,7 @@ async function generate(): Promise<void> {
 
   const regex = /\[+(\.*.*?)\]+/g
 
-  for (const filePath of absoluteFilePaths) {
+  for (const [filePath, pageExtension] of absoluteFilePaths) {
     const pathParams: Array<string> = []
     const pathname = filePath
       .slice(pagesFolder.length, -pageExtension.length)

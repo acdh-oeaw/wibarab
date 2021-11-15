@@ -1,15 +1,17 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
+import { compile } from '@mdx-js/mdx'
 import * as YAML from 'js-yaml'
+import withGfm from 'remark-gfm'
 import { VFile } from 'vfile'
 import { matter } from 'vfile-matter'
 
 import { articleExtension, blogFolderPath } from '@/lib/data/data.config'
 import { getTeamMember } from '@/lib/data/team'
-import type { ArticleMetadataRaw, ArticleMetadata } from '@/lib/data/types'
+import type { ArticleMetadataRaw, ArticlePreview, Article } from '@/lib/data/types'
 
-export async function getArticlePreviews(): Promise<Array<ArticleMetadata>> {
+export async function getArticlePreviews(): Promise<Array<ArticlePreview>> {
   const folderEntries = await fs.readdir(blogFolderPath, { withFileTypes: true })
 
   const articles = []
@@ -30,10 +32,11 @@ export async function getArticlePreviews(): Promise<Array<ArticleMetadata>> {
   return articles
 }
 
-export async function getArticlePreview(id: string): Promise<ArticleMetadata> {
+export async function getArticlePreview(id: string): Promise<ArticlePreview> {
   const filePath = path.join(blogFolderPath, id + articleExtension)
   const content = await fs.readFile(filePath, { encoding: 'utf-8' })
-  const metadata = matter(new VFile(content), { yaml: { schema: YAML.CORE_SCHEMA } }).data[
+  const vfile = new VFile({ value: content, pathname: filePath })
+  const metadata = matter(vfile, { yaml: { schema: YAML.CORE_SCHEMA } }).data[
     'matter'
   ] as ArticleMetadataRaw
 
@@ -43,6 +46,37 @@ export async function getArticlePreview(id: string): Promise<ArticleMetadata> {
     date: metadata.date,
     authors: await Promise.all(metadata.authors.map(getTeamMember)),
     abstract: metadata.abstract,
+  }
+
+  return article
+}
+
+export async function getArticle(id: string): Promise<Article> {
+  const filePath = path.join(blogFolderPath, id + articleExtension)
+  const content = await fs.readFile(filePath, { encoding: 'utf-8' })
+  const vfile = new VFile({ value: content, pathname: filePath })
+  const metadata = matter(vfile, { yaml: { schema: YAML.CORE_SCHEMA } }).data[
+    'matter'
+  ] as ArticleMetadataRaw
+
+  const code = String(
+    await compile(vfile, {
+      outputFormat: 'function-body',
+      useDynamicImport: false,
+      remarkPlugins: [withGfm],
+      rehypePlugins: [],
+    }),
+  )
+
+  const article = {
+    id,
+    title: metadata.title,
+    date: metadata.date,
+    authors: await Promise.all(metadata.authors.map(getTeamMember)),
+    abstract: metadata.abstract,
+    leadIn: metadata.leadIn,
+    featuredImage: metadata.featuredImage,
+    code,
   }
 
   return article

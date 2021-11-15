@@ -1,8 +1,8 @@
-import type { Article } from '@/lib/data/types'
+import type { ArticleMetadata } from '@/lib/data/types'
 import { formatDate } from '@/lib/utils'
 
 export interface ArticleMetadataProps {
-  metadata: Article
+  metadata: ArticleMetadata
 }
 
 export function ArticleMedata(props: ArticleMetadataProps): JSX.Element {
@@ -22,7 +22,7 @@ export function ArticleMedata(props: ArticleMetadataProps): JSX.Element {
       <span aria-hidden className="mx-3">
         &bull;
       </span>
-      <dt className="inline whitespace-nowrap">Published on</dt>
+      <dt className="inline">Published on </dt>
       <dd className="inline">
         <time dateTime={date}>{formatDate(new Date(date))}</time>
       </dd>

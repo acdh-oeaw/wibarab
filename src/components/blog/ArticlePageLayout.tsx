@@ -10,14 +10,14 @@ import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import type { PageParams } from '@/lib/core/navigation/types'
-import type { Article } from '@/lib/data/types'
+import type { ArticleMetadata } from '@/lib/data/types'
 
 export type ArticlePageLayoutParamsInput = Record<string, never>
 export type ArticlePageLayoutParams = PageParams<ArticlePageLayoutParamsInput>
 export interface ArticlePageLayoutProps {
   children?: ReactNode
   /** Added by `remark` plugin. */
-  metadata: Article
+  metadata: ArticleMetadata
 }
 
 export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {

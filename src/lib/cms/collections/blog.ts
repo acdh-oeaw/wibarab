@@ -8,7 +8,7 @@ export const collection: CmsCollection = {
     preview: true,
   },
   format: 'frontmatter',
-  extension: 'mdx',
+  extension: 'page.mdx',
   folder: 'src/pages/blog',
   create: true,
   fields: [

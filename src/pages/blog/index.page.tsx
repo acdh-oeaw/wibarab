@@ -11,12 +11,12 @@ import { PageSection } from '@/components/PageSection'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import type { PageParams } from '@/lib/core/navigation/types'
 import { getArticlePreviews } from '@/lib/data/article'
-import type { ArticleMetadata } from '@/lib/data/types'
+import { ArticlePreview } from '@/lib/data/types'
 
 export type BlogPageParamsInput = Record<string, never>
 export type BlogPageParams = PageParams<BlogPageParamsInput>
 export type BlogPageProps = {
-  articles: Array<ArticleMetadata>
+  articles: Array<ArticlePreview>
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<BlogPageProps>> {
@@ -53,7 +53,7 @@ export default function BlogPage(props: BlogPageProps): JSX.Element {
 }
 
 interface ArticlesListProps {
-  articles: Array<ArticleMetadata>
+  articles: Array<ArticlePreview>
 }
 
 function ArticlesList(props: ArticlesListProps) {
@@ -77,7 +77,7 @@ function ArticlesList(props: ArticlesListProps) {
 }
 
 interface ArticlePreviewProps {
-  article: ArticleMetadata
+  article: ArticlePreview
 }
 
 function ArticlePreview(props: ArticlePreviewProps) {
@@ -109,7 +109,7 @@ function ArticlePreview(props: ArticlePreviewProps) {
 }
 
 interface ArticlePreviewMetadataProps {
-  metadata: ArticleMetadata
+  metadata: ArticlePreview
 }
 function ArticlePreviewMetadata(props: ArticlePreviewMetadataProps) {
   const { authors } = props.metadata

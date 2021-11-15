@@ -5,8 +5,7 @@ import * as path from 'path'
 import createNextSvgPlugin from '@stefanprobst/next-svg'
 import withParsedFrontmatter from '@stefanprobst/remark-extract-yaml-frontmatter'
 import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-frontmatter/mdx'
-import { Parser } from 'acorn'
-import jsx from 'acorn-jsx'
+import withPage from '@stefanprobst/remark-mdx-page'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
 
@@ -52,7 +51,7 @@ const config = {
       },
     ]
   },
-  pageExtensions: ['page.tsx', 'mdx', 'api.ts'],
+  pageExtensions: ['page.tsx', 'page.mdx', 'api.ts'],
   poweredByHeader: false,
   reactStrictMode: true,
   webpack(config, options) {
@@ -140,26 +139,19 @@ const config = {
                 },
               ],
               withParsedFrontmatterExport,
-              function withMdxLayout() {
-                return function transformer(tree, _file) {
-                  const jsxParser = Parser.extend(jsx())
-
-                  const estree = jsxParser.parse(
-                    `
-                    import { ArticlePageLayout } from '@/components/blog/ArticlePageLayout';
-                    export default function Layout(props) {
-                      return <ArticlePageLayout metadata={metadata} {...props} />;
-                    }`,
-                    { sourceType: 'module', ecmaVersion: 2020 },
-                  )
-
-                  tree.children.push({
-                    type: 'mdxjsEsm',
-                    data: { estree },
-                  })
-                }
-              },
               withGfm,
+              [
+                withPage,
+                {
+                  pathname: path.join(
+                    process.cwd(),
+                    'src',
+                    'pages',
+                    'blog',
+                    '[id].page.template.tsx',
+                  ),
+                },
+              ],
             ],
             rehypePlugins: [],
           },
