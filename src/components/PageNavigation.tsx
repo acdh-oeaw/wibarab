@@ -2,9 +2,11 @@ import cx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { routes } from '@/lib/core/navigation/routes'
+
 const links = {
-  Home: { pathname: '/' },
-  Blog: { pathname: '/blog' },
+  Home: routes.HomePage(),
+  Blog: routes.BlogPage(),
 }
 
 export function PageNavigation(): JSX.Element {

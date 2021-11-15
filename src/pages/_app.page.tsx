@@ -7,6 +7,7 @@ import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { PageLayout } from '@/components/PageLayout'
+import { feed, webManifest } from '~/config/site.config'
 
 export interface GetLayout {
   (page: JSX.Element, pageProps: AppProps['pageProps']): JSX.Element
@@ -33,9 +34,9 @@ export default function App(props: AppProps): JSX.Element {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href={'/' + webManifest} />
 
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href={feed} />
       </Head>
       <InitialThemeScript />
       {getLayout(<Component {...pageProps} />, pageProps)}

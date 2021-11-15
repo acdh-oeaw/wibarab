@@ -9,6 +9,7 @@ import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 // import { PageSectionTitle } from '@/components/PageSectionTitle'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
+import { routes } from '@/lib/core/navigation/routes'
 import type { PageParams } from '@/lib/core/navigation/types'
 import { getArticlePreviews } from '@/lib/data/article'
 import { ArticlePreview } from '@/lib/data/types'
@@ -83,7 +84,7 @@ interface ArticlePreviewProps {
 function ArticlePreview(props: ArticlePreviewProps) {
   const { article } = props
 
-  const href = { pathname: `/blog/${article.id}` }
+  const href = routes.ArticlePage({ id: article.id })
 
   return (
     <article className="grid py-12 gap-y-3">

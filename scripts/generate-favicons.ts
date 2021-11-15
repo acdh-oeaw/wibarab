@@ -1,10 +1,10 @@
 import generate from '@stefanprobst/favicons'
 
 import { siteMetadata } from '../config/metadata.config'
+import { webManifest } from '../config/site.config'
 import { log } from '../src/lib/utils/log'
 
 const { favicon, shortTitle, title } = siteMetadata
-const webManifest = 'site.webmanifest'
 
 generate({
   inputFilePath: favicon.src,

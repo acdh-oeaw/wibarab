@@ -8,13 +8,13 @@ import { rss } from 'xast-util-feed'
 import { toXml } from 'xast-util-to-xml'
 
 import { siteMetadata } from '../config/metadata.config'
-import { baseUrl } from '../config/site.config'
+import { baseUrl, feed } from '../config/site.config'
 import { articleExtension, blogFolderPath } from '../src/lib/data/data.config'
 // import { getTeamMember } from '../src/lib/data/team'
 import type { ArticleMetadataRaw } from '../src/lib/data/types'
 import { log } from '../src/lib/utils/log'
 
-const feedFilePath = path.join(process.cwd(), 'public', 'feed.xml')
+const feedFilePath = path.join(process.cwd(), 'public', feed)
 
 async function getArticlesMetadata() {
   const folderEntries = await fs.readdir(blogFolderPath, { withFileTypes: true })
@@ -22,7 +22,7 @@ async function getArticlesMetadata() {
   const articles = []
 
   for (const folderEntry of folderEntries) {
-    if (folderEntry.isFile() && path.extname(folderEntry.name) === articleExtension) {
+    if (folderEntry.isFile() && folderEntry.name.endsWith(articleExtension)) {
       const filePath = path.join(blogFolderPath, folderEntry.name)
       const content = await fs.readFile(filePath, { encoding: 'utf-8' })
       const metadata = matter(new VFile(content), { yaml: { schema: YAML.CORE_SCHEMA } }).data[

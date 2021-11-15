@@ -56,4 +56,9 @@ export const siteMetadata: SiteMetadata = {
     alt: '',
   },
   twitter: {},
+  creator: {
+    name: 'Austrian Centre for Digital Humanities and Cultural Heritage',
+    shortName: 'ACDH-CH',
+    website: 'https://www.oeaw.ac.at/acdh/',
+  },
 } as const

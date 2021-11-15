@@ -1,9 +1,13 @@
 import Link from 'next/link'
 
+import { routes } from '@/lib/core/navigation/routes'
+import { siteMetadata } from '~/config/metadata.config'
+import { feed } from '~/config/site.config'
+
+const { creator } = siteMetadata
+
 export function PageFooter(): JSX.Element {
-  const acdhHref = 'https://www.oeaw.ac.at/acdh/projects/wibarab-what-is-bedouin-type-arabic'
-  const imprintHref = { pathname: '/imprint' }
-  const rssFeedHref = '/feed.xml'
+  const imprintHref = routes.ImprintPage()
 
   return (
     <footer className="py-32 page-section text-text">
@@ -11,12 +15,12 @@ export function PageFooter(): JSX.Element {
         <small>
           &copy; {new Date().getUTCFullYear()}{' '}
           <a
-            href={acdhHref}
+            href={creator?.website}
             target="_blank"
             rel="noreferrer"
             className="hover:text-text-highlighted focus-visible:text-text-highlighted"
           >
-            ACDH-CH
+            {creator?.shortName}
           </a>
           <span className="mx-2">&bull;</span>
           <Link href={imprintHref}>
@@ -26,7 +30,7 @@ export function PageFooter(): JSX.Element {
           </Link>
         </small>
         <small>
-          <a href={rssFeedHref} target="_blank" rel="noreferrer">
+          <a href={feed} target="_blank" rel="noreferrer">
             RSS Feed
           </a>
         </small>

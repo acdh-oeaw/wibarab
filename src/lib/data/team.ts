@@ -10,7 +10,7 @@ export async function getTeam(): Promise<Array<TeamMember>> {
   const team = []
 
   for (const folderEntry of folderEntries) {
-    if (folderEntry.isFile() && path.extname(folderEntry.name) === teamExtension) {
+    if (folderEntry.isFile() && folderEntry.name.endsWith(teamExtension)) {
       const id = folderEntry.name.slice(0, -teamExtension.length)
       const teamMember = await getTeamMember(id)
 

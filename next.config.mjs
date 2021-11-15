@@ -1,11 +1,10 @@
-import * as fs from 'fs'
-import * as path from 'path'
-
 /* @ts-expect-error Missing module declaration. */
 import createNextSvgPlugin from '@stefanprobst/next-svg'
 import withParsedFrontmatter from '@stefanprobst/remark-extract-yaml-frontmatter'
 import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-frontmatter/mdx'
 import withPage from '@stefanprobst/remark-mdx-page'
+import * as fs from 'fs'
+import * as path from 'path'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
 
@@ -68,7 +67,7 @@ const config = {
       const team = new Map()
 
       for (const folderEntry of folderEntries) {
-        if (folderEntry.isFile() && path.extname(folderEntry.name) === teamExtension) {
+        if (folderEntry.isFile() && folderEntry.name.endsWith(teamExtension)) {
           const id = folderEntry.name.slice(0, -teamExtension.length)
           const filePath = path.join(teamFolderPath, folderEntry.name)
           const metadata = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }))
