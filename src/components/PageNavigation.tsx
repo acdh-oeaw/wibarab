@@ -6,6 +6,7 @@ import { routes } from '@/lib/core/navigation/routes'
 
 const links = {
   Home: routes.HomePage(),
+  Test: routes.TestPage(),
   Blog: routes.BlogPage(),
 }
 
