@@ -13,7 +13,13 @@ export function TeamMemberDetails(props: TeamMemberDetailsProps): JSX.Element {
 
   return (
     <article className="grid gap-3 text-text">
-      {hasAvatar ? <img src={avatar} alt="" /> : null}
+      {hasAvatar ? (
+        <img
+          src={avatar}
+          alt=""
+          className="object-contain w-full rounded grayscale mix-blend-difference"
+        />
+      ) : null}
       <h3 className="font-medium">{name}</h3>
       <p className="text-sm text-text-muted">{bio}</p>
       <dl className="text-sm text-muted">
