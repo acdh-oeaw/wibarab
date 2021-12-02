@@ -8,6 +8,8 @@ import fromMarkdown from 'remark-parse'
 import toHast from 'remark-rehype'
 import { unified } from 'unified'
 
+import { Link } from '@/lib/core/navigation/Link'
+
 const processor = unified()
   .use(fromMarkdown)
   .use(withMdx)
@@ -15,10 +17,10 @@ const processor = unified()
   .use(withSmartQuotes)
   .use(toHast)
   .use(withImageCaptions)
-  .use(toVdom, { createElement })
+  /* @ts-expect-error Upstream types don't handle custom components. */
+  .use(toVdom, { createElement, components: { Link } })
 
 export interface MdxProps {
-  className?: string
   mdx: string
 }
 

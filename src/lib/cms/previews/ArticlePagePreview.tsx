@@ -33,7 +33,9 @@ export function ArticlePagePreview(props: ArticlePagePreviewProps): JSX.Element 
   return (
     <Preview>
       <ArticlePageLayout metadata={metadata}>
-        <Mdx className="prose" mdx={content} />
+        <div className="prose">
+          <Mdx mdx={content} />
+        </div>
       </ArticlePageLayout>
       <Spacer />
     </Preview>
