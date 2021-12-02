@@ -1206,13 +1206,13 @@
     eslint-plugin-simple-import-sort "^7.0.0"
     eslint-plugin-testing-library "^5.0.0"
 
-"@stefanprobst/favicons@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@stefanprobst/favicons/-/favicons-2.0.2.tgz#fc9638b2c430ba4e4d0bf9c9b7b4834548cc1784"
-  integrity sha512-3u9gTvxBfu2yn9IxKM1YGwtTEtwSDBCpMEfVISn99MyW0WOYvuJLjx9WsQeFGL5GkFxavHosyb1k0K6kNHNCaw==
+"@stefanprobst/favicons@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@stefanprobst/favicons/-/favicons-2.0.3.tgz#978679c96f8f0f5f00a4bd878328f3b5cf04164c"
+  integrity sha512-KghSkTtgMXcVbYdnZVN4iRflS0/3zpofqAl33/nBvslesWm5AAIOLWEq7hAmAjB+dboGcHu8PabzLikCBea4dA==
   dependencies:
     mri "^1.2.0"
-    sharp "^0.29.2"
+    sharp "^0.29.3"
 
 "@stefanprobst/is-absolute-url@^1.0.0", "@stefanprobst/is-absolute-url@^1.0.1":
   version "1.0.1"
@@ -10479,7 +10479,7 @@ shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@^0.29.2, sharp@^0.29.3:
+sharp@^0.29.3:
   version "0.29.3"
   resolved "https://registry.npmjs.org/sharp/-/sharp-0.29.3.tgz#0da183d626094c974516a48fab9b3e4ba92eb5c2"
   integrity sha512-fKWUuOw77E4nhpyzCCJR1ayrttHoFHBT2U/kR/qEMRhvPEcluG4BKj324+SCO1e84+knXHwhJ1HHJGnUt4ElGA==
