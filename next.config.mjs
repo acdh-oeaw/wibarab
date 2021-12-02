@@ -61,6 +61,9 @@ const config = {
   pageExtensions: ['page.tsx', 'page.mdx', 'api.ts'],
   poweredByHeader: false,
   reactStrictMode: true,
+  typescript: {
+    // ignoreBuildErrors: true,
+  },
   webpack(config, options) {
     /**
      * @see https://github.com/vercel/next.js/issues/17806

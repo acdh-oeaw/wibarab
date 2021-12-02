@@ -43,7 +43,7 @@ public/**/apple-touch-icon.png
 public/**/*.webmanifest
 public/feed.xml
 public/assets/cms/styles/*.css
-src/lib/core/navigation/routes.ts
+# src/lib/core/navigation/routes.ts
 
 # in addition to .gitignore contents
 .git/
