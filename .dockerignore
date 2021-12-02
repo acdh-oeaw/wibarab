@@ -40,6 +40,8 @@ yarn-error.log*
 public/**/favicon.ico
 public/**/icon.svg
 public/**/apple-touch-icon.png
+public/**/android-chrome-192x192.png
+public/**/android-chrome-512x512.png
 public/**/*.webmanifest
 public/feed.xml
 public/assets/cms/styles/*.css
