@@ -1,7 +1,8 @@
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import type { PropsWithChildren } from 'react'
 
 import { ArticlePageLayout } from '@/components/blog/ArticlePageLayout'
-import type { PageParams } from '@/lib/core/navigation/types'
+import type { ArticleMetadata } from '@/lib/data/types'
 
 /**
  * This page does note generate routes directly. It is used:
@@ -13,13 +14,19 @@ import type { PageParams } from '@/lib/core/navigation/types'
  * `@stefanprobst/remark-extract-yaml-frontmatter/mdx`).
  */
 
-export type ArticlePageParamsInput = {
-  id: string
+export namespace ArticlePage {
+  export type PathParamsInput = {
+    id: string
+  }
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export interface Props {
+    /** Added by `remark` plugin. */
+    metadata: ArticleMetadata
+  }
 }
-export type ArticlePageParams = PageParams<ArticlePageParamsInput>
-export type ArticlePageProps = Record<string, never>
 
-export default function ArticlePage(props: PropsWithChildren<ArticlePageProps>): JSX.Element {
-  /* @ts-expect-error Metadata is added via mdx loader. */
+export default function ArticlePage(props: PropsWithChildren<ArticlePage.Props>): JSX.Element {
+  const metadata = props.metadata
   return <ArticlePageLayout metadata={metadata}>{props.children}</ArticlePageLayout>
 }

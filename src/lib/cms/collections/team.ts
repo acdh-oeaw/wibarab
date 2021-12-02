@@ -7,7 +7,7 @@ export const collection: CmsCollection = {
   identifier_field: 'name',
   slug: '{{slug}}',
   format: 'json',
-  folder: 'src/components/home/team',
+  folder: 'src/components/team/data',
   create: true,
   fields: [
     {
@@ -27,6 +27,7 @@ export const collection: CmsCollection = {
       name: 'avatar',
       label: 'Avatar',
       widget: 'image',
+      required: false,
     },
   ],
 }

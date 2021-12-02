@@ -1,4 +1,4 @@
-import type { GetStaticPropsResult } from 'next'
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import { Fragment } from 'react'
 
 import AboutSection, { metadata } from '@/components/home/About.mdx'
@@ -10,29 +10,16 @@ import { PageSection } from '@/components/PageSection'
 import { PageSectionTitle } from '@/components/PageSectionTitle'
 import { Spacer } from '@/components/Spacer'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
-import type { PageParams } from '@/lib/core/navigation/types'
-import { getTeam } from '@/lib/data/team'
-import type { TeamMember } from '@/lib/data/types'
+import { Link } from '@/lib/core/navigation/Link'
 
-export type HomePageParamsInput = Record<string, never>
-export type HomePageParams = PageParams<HomePageParamsInput>
-export type HomePageProps = {
-  team: Array<TeamMember>
+export namespace HomePage {
+  export type PathParamsInput = never
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export type Props = Record<string, never>
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<HomePageProps>> {
-  const team = await getTeam()
-
-  return {
-    props: {
-      team,
-    },
-  }
-}
-
-export default function HomePage(props: HomePageProps): JSX.Element {
-  const { team } = props
-
+export default function HomePage(_props: HomePage.Props): JSX.Element {
   return (
     <Fragment>
       <PageMetadata title="Home" />
@@ -75,62 +62,12 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </PageSection>
         <Spacer />
         <PageSection>
-          <PageSectionTitle>Team</PageSectionTitle>
-          <TeamMembersList team={team} />
-        </PageSection>
-        <Spacer />
-        <PageSection>
           <PageSectionTitle>{metadata.title}</PageSectionTitle>
           <div className="prose">
-            <AboutSection />
+            <AboutSection components={{ Link }} />
           </div>
         </PageSection>
       </PageMainContent>
     </Fragment>
-  )
-}
-
-interface TeamMembersListProps {
-  team: Array<TeamMember>
-}
-
-function TeamMembersList(props: TeamMembersListProps) {
-  const { team } = props
-
-  return (
-    <ul className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-x-6 gap-y-12">
-      {team.map((teamMember) => {
-        return (
-          <li key={teamMember.name}>
-            <TeamMemberDetails teamMember={teamMember} />
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
-
-interface TeamMemberDetailsProps {
-  teamMember: TeamMember
-}
-function TeamMemberDetails(props: TeamMemberDetailsProps) {
-  const { teamMember } = props
-
-  return (
-    <article className="grid gap-3 text-text">
-      <h3 className="font-medium">{teamMember.name}</h3>
-      <p className="text-sm text-text-muted">{teamMember.bio}</p>
-      <dl className="text-sm text-muted">
-        <dt className="sr-only">Email</dt>
-        <dd>
-          <a
-            href={`mailto:${teamMember.email}`}
-            className="hover:text-text-highlighted focus-visible:text-text-highlighted"
-          >
-            {teamMember.email}
-          </a>
-        </dd>
-      </dl>
-    </article>
   )
 }

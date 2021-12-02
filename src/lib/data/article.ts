@@ -74,7 +74,7 @@ export async function getArticle(id: string): Promise<Article> {
     authors: await Promise.all(metadata.authors.map(getTeamMember)),
     abstract: metadata.abstract,
     leadIn: metadata.leadIn,
-    featuredImage: metadata.featuredImage,
+    featuredImage: metadata.featuredImage ?? null,
     code,
   }
 

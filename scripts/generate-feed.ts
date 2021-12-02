@@ -8,10 +8,12 @@ import { rss } from 'xast-util-feed'
 import { toXml } from 'xast-util-to-xml'
 
 import { siteMetadata } from '../config/metadata.config'
-import { baseUrl, feed } from '../config/site.config'
+import { feed } from '../config/site.config'
+import { routes } from '../src/lib/core/navigation/routes'
 import { articleExtension, blogFolderPath } from '../src/lib/data/data.config'
 // import { getTeamMember } from '../src/lib/data/team'
 import type { ArticleMetadataRaw } from '../src/lib/data/types'
+import { createSiteUrl } from '../src/lib/utils/createSiteUrl'
 import { log } from '../src/lib/utils/log'
 
 const feedFilePath = path.join(process.cwd(), 'public', feed)
@@ -51,7 +53,7 @@ async function generate() {
     url: siteMetadata.url,
     lang: 'en',
     description: siteMetadata.description,
-    feedUrl: String(new URL('feed.xml', baseUrl)),
+    feedUrl: String(createSiteUrl({ pathname: feed })),
   }
 
   const articlesMetadata = await getArticlesMetadata()
@@ -61,13 +63,11 @@ async function generate() {
       title: metadata.title,
       description: metadata.abstract,
       published: metadata.date,
-      url: String(new URL('/blog/' + metadata.id, baseUrl)),
+      url: String(createSiteUrl(routes.ArticlePage({ id: metadata.id }))),
     }
   })
 
-  const feed = toXml(rss(channel, entries))
-
-  await fs.writeFile(feedFilePath, feed, { encoding: 'utf-8' })
+  await fs.writeFile(feedFilePath, toXml(rss(channel, entries)), { encoding: 'utf-8' })
 }
 
 generate()

@@ -35,6 +35,7 @@ export async function getTeamMember(id: string): Promise<TeamMember> {
     name: metadata.name,
     bio: metadata.bio,
     email: metadata.email,
+    avatar: metadata.avatar ?? null,
   }
 
   return teamMember

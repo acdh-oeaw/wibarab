@@ -1,5 +1,5 @@
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import type { GetStaticPropsResult } from 'next'
-import Link from 'next/link'
 import { Fragment } from 'react'
 
 import { PageHeroLeadIn } from '@/components/PageHeroLeadIn'
@@ -9,18 +9,21 @@ import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 // import { PageSectionTitle } from '@/components/PageSectionTitle'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
+import { Link } from '@/lib/core/navigation/Link'
 import { routes } from '@/lib/core/navigation/routes'
-import type { PageParams } from '@/lib/core/navigation/types'
 import { getArticlePreviews } from '@/lib/data/article'
 import { ArticlePreview } from '@/lib/data/types'
 
-export type BlogPageParamsInput = Record<string, never>
-export type BlogPageParams = PageParams<BlogPageParamsInput>
-export type BlogPageProps = {
-  articles: Array<ArticlePreview>
+export namespace BlogPage {
+  export type PathParamsInput = never
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export interface Props {
+    articles: Array<ArticlePreview>
+  }
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<BlogPageProps>> {
+export async function getStaticProps(): Promise<GetStaticPropsResult<BlogPage.Props>> {
   const articles = await getArticlePreviews()
 
   return {
@@ -30,7 +33,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<BlogPagePro
   }
 }
 
-export default function BlogPage(props: BlogPageProps): JSX.Element {
+export default function BlogPage(props: BlogPage.Props): JSX.Element {
   const { articles } = props
 
   return (
@@ -89,20 +92,17 @@ function ArticlePreview(props: ArticlePreviewProps) {
   return (
     <article className="grid py-12 gap-y-3">
       <h3 className="font-medium text-size-heading text-text-highlighted glow">
-        <Link href={href}>
-          <a>{article.title}</a>
-        </Link>
+        <Link href={href}>{article.title}</Link>
       </h3>
       <p className="leading-relaxed text-size-text text-text-muted">{article.abstract}</p>
       <footer className="flex flex-col gap-3 xs:items-center xs:justify-between xs:flex-row">
         <ArticlePreviewMetadata metadata={article} />
-        <Link href={href}>
-          <a
-            aria-label={`Read article "${article.title}"`}
-            className="text-sm hover:text-text-highlighted focus-visible:text-text-highlighted whitespace-nowrap"
-          >
-            Read more &raquo;
-          </a>
+        <Link
+          href={href}
+          aria-label={`Read article "${article.title}"`}
+          className="text-sm hover:text-text-highlighted focus-visible:text-text-highlighted whitespace-nowrap"
+        >
+          Read more &raquo;
         </Link>
       </footer>
     </article>

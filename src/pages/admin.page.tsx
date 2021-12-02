@@ -1,3 +1,4 @@
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import dynamic from 'next/dynamic'
 import { Fragment, memo } from 'react'
 
@@ -5,7 +6,6 @@ import { config } from '@/lib/cms/cms.config'
 import { ArticlePagePreview } from '@/lib/cms/previews/ArticlePagePreview'
 import { SectionPreview } from '@/lib/cms/previews/SectionPreview'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
-import type { PageParams } from '@/lib/core/navigation/types'
 import type { PageWithLayout } from '@/pages/_app.page'
 
 const CMS = dynamic(
@@ -45,11 +45,14 @@ const CMS = dynamic(
   },
 )
 
-export type AdminPageParamsInput = Record<string, never>
-export type AdminPageParams = PageParams<AdminPageParamsInput>
-export type AdminPageProps = Record<string, never>
+export namespace AdminPage {
+  export type PathParamsInput = never
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export type Props = Record<string, never>
+}
 
-export default function AdminPage(_props: AdminPageProps): JSX.Element {
+export default function AdminPage(_props: AdminPage.Props): JSX.Element {
   return (
     <Fragment>
       <PageMetadata nofollow noindex title="CMS" />
@@ -59,7 +62,7 @@ export default function AdminPage(_props: AdminPageProps): JSX.Element {
   )
 }
 
-const Page: PageWithLayout<AdminPageProps> = AdminPage
+const Page: PageWithLayout<AdminPage.Props> = AdminPage
 
 Page.getLayout = (page) => {
   return page

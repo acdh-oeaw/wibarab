@@ -1,3 +1,5 @@
+import withImageCaptions from '@stefanprobst/rehype-image-captions'
+import withSmartQuotes from '@stefanprobst/remark-smart-quotes'
 import { createElement, Fragment, useMemo } from 'react'
 import toVdom from 'rehype-react'
 import withGfm from 'remark-gfm'
@@ -10,7 +12,9 @@ const processor = unified()
   .use(fromMarkdown)
   .use(withMdx)
   .use(withGfm)
+  .use(withSmartQuotes)
   .use(toHast)
+  .use(withImageCaptions)
   .use(toVdom, { createElement })
 
 export interface MdxProps {

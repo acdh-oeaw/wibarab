@@ -1,15 +1,18 @@
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import { Fragment } from 'react'
 
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
-import type { PageParams } from '@/lib/core/navigation/types'
 
-export type NotFoundPageParamsInput = Record<string, never>
-export type NotFoundPageParams = PageParams<NotFoundPageParamsInput>
-export type NotFoundPageProps = Record<string, never>
+export namespace NotFoundPage {
+  export type PathParamsInput = never
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export type Props = Record<string, never>
+}
 
-export default function NotFoundPage(_props: NotFoundPageProps): JSX.Element {
+export default function NotFoundPage(_props: NotFoundPage.Props): JSX.Element {
   return (
     <Fragment>
       <PageMetadata nofollow noindex title="Not found" />

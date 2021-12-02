@@ -49,6 +49,7 @@ export const collection: CmsCollection = {
       name: 'featuredImage',
       label: 'Featured image',
       widget: 'image',
+      required: false,
     },
     {
       name: 'body',

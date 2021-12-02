@@ -2,8 +2,8 @@ import type { Theme } from '@stefanprobst/next-theme'
 import { useTheme } from '@stefanprobst/next-theme'
 import type { FC, SVGProps } from 'react'
 
-import { Svg as MoonIcon } from '~/public/assets/icons/moon.svg'
-import { Svg as SunIcon } from '~/public/assets/icons/sun.svg'
+import MoonIcon from '~/public/assets/icons/moon.svg?symbol'
+import SunIcon from '~/public/assets/icons/sun.svg?symbol'
 
 export function ThemeToggleButton(): JSX.Element | null {
   const { theme, toggleTheme } = useTheme()

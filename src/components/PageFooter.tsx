@@ -1,14 +1,12 @@
-import Link from 'next/link'
-
+import { Link } from '@/lib/core/navigation/Link'
 import { routes } from '@/lib/core/navigation/routes'
+import { createSiteUrl } from '@/lib/utils'
 import { siteMetadata } from '~/config/metadata.config'
 import { feed } from '~/config/site.config'
 
 const { creator } = siteMetadata
 
 export function PageFooter(): JSX.Element {
-  const imprintHref = routes.ImprintPage()
-
   return (
     <footer className="py-32 page-section text-text">
       <div className="flex items-center justify-between gap-x-6">
@@ -23,14 +21,15 @@ export function PageFooter(): JSX.Element {
             {creator?.shortName}
           </a>
           <span className="mx-2">&bull;</span>
-          <Link href={imprintHref}>
-            <a className="hover:text-text-highlighted focus-visible:text-text-highlighted">
-              Imprint
-            </a>
+          <Link
+            href={routes.ImprintPage()}
+            className="hover:text-text-highlighted focus-visible:text-text-highlighted"
+          >
+            Imprint
           </Link>
         </small>
         <small>
-          <a href={feed} target="_blank" rel="noreferrer">
+          <a href={String(createSiteUrl({ pathname: feed }))} target="_blank" rel="noreferrer">
             RSS Feed
           </a>
         </small>

@@ -49,6 +49,9 @@ module.exports = {
               blockquote: {
                 color: theme('colors.text'),
               },
+              figcaption: {
+                color: theme('colors.text'),
+              },
               h1: {
                 color: theme('colors.text'),
                 fontSize: theme('fontSize.size-title'),

@@ -9,34 +9,31 @@ import { PageHeroTitle } from '@/components/PageHeroTitle'
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
-import type { PageParams } from '@/lib/core/navigation/types'
 import type { ArticleMetadata } from '@/lib/data/types'
+import { isNonEmptyString } from '@/lib/utils'
 
-export type ArticlePageLayoutParamsInput = Record<string, never>
-export type ArticlePageLayoutParams = PageParams<ArticlePageLayoutParamsInput>
 export interface ArticlePageLayoutProps {
   children?: ReactNode
-  /** Added by `remark` plugin. */
   metadata: ArticleMetadata
 }
 
 export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
   const { title, leadIn, date, authors, featuredImage, abstract } = props.metadata
 
+  const hasFeaturedImage = isNonEmptyString(featuredImage)
+  const ogImage = hasFeaturedImage ? { images: [{ src: featuredImage, alt: '' }] } : {}
+  const schemaOrgImage = hasFeaturedImage ? { image: featuredImage } : {}
+
   return (
     <Fragment>
-      <PageMetadata
-        title={title}
-        description={abstract}
-        openGraph={{ images: [{ src: featuredImage, alt: '' }] }}
-      />
+      <PageMetadata title={title} description={abstract} openGraph={{ ...ogImage }} />
       <SchemaOrg
         schema={{
           '@type': 'Article',
           headline: title,
           abstract: abstract,
           datePublished: date,
-          image: featuredImage,
+          ...schemaOrgImage,
           author: authors
             .map((author) => {
               return author.name
@@ -51,13 +48,15 @@ export function ArticlePageLayout(props: ArticlePageLayoutProps): JSX.Element {
           <ArticleMedata metadata={props.metadata} />
         </ArticleHeaderSection>
         <PageSection>
-          <div className="mb-6 bleed">
-            <img
-              src={featuredImage}
-              alt=""
-              className="object-cover w-full rounded aspect-[16/10]"
-            />
-          </div>
+          {hasFeaturedImage ? (
+            <div className="mb-6 bleed">
+              <img
+                src={featuredImage}
+                alt=""
+                className="object-cover w-full rounded aspect-[16/10]"
+              />
+            </div>
+          ) : null}
           <div className="prose">{props.children}</div>
         </PageSection>
       </PageMainContent>

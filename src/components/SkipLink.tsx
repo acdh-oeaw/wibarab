@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import type { ReactNode } from 'react'
+
+import { Link } from '@/lib/core/navigation/Link'
 
 const defaultId = 'main-content'
 
@@ -20,15 +21,8 @@ export function SkipLink(props: SkipLinkProps): JSX.Element {
   }
 
   return (
-    <Link href={{ hash: id }}>
-      <a
-        /** This `href` is just here to silence linter warnings. */
-        href={`#${id}`}
-        className="skip-link"
-        onClick={moveFocus}
-      >
-        {props.children}
-      </a>
+    <Link href={{ hash: id }} className="skip-link" onClick={moveFocus}>
+      {props.children}
     </Link>
   )
 }

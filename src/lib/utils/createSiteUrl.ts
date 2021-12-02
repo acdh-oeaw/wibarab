@@ -1,4 +1,4 @@
-import { baseUrl } from '~/config/site.config'
+import { baseUrl } from '../../../config/site.config'
 
 type Primitive = boolean | number | string | null | undefined
 

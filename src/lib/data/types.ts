@@ -3,6 +3,7 @@ export interface TeamMember {
   name: string
   email: string
   bio: string
+  avatar: string | null
 }
 
 export interface ArticleMetadataRaw {
@@ -11,7 +12,7 @@ export interface ArticleMetadataRaw {
   authors: Array<TeamMember['id']>
   abstract: string
   leadIn: string
-  featuredImage: string
+  featuredImage: string | null
 }
 
 export interface ArticlePreview extends Pick<ArticleMetadataRaw, 'abstract' | 'date' | 'title'> {

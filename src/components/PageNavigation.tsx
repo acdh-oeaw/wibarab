@@ -1,37 +1,26 @@
-import cx from 'clsx'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-
+import { NavLink } from '@/lib/core/navigation/NavLink'
 import { routes } from '@/lib/core/navigation/routes'
 
 const links = {
   Home: routes.HomePage(),
-  Team: routes.HomePage(),
+  Team: routes.TeamPage(),
   Blog: routes.BlogPage(),
 }
 
 export function PageNavigation(): JSX.Element {
-  const router = useRouter()
-
   return (
     <nav>
       <ul className="flex gap-8 text-text">
         {Object.entries(links).map(([label, href]) => {
-          const isCurrentPage = href.pathname === router.pathname
-
           return (
             <li key={href.pathname}>
-              <Link href={href}>
-                <a
-                  aria-current={isCurrentPage ? 'page' : undefined}
-                  className={cx(
-                    'py-2 relative after:absolute after:-inset-x-2 after:inset-y-0 border-b border-transparent hover:text-text-highlighted focus-visible:text-text-highlighted',
-                    isCurrentPage && 'border-current',
-                  )}
-                >
-                  {label}
-                </a>
-              </Link>
+              <NavLink
+                href={href}
+                className="relative py-2 border-b border-transparent after:absolute after:-inset-x-2 after:inset-y-0 hover:text-text-highlighted focus-visible:text-text-highlighted"
+                activeClassName="border-current"
+              >
+                {label}
+              </NavLink>
             </li>
           )
         })}

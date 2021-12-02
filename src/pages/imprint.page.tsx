@@ -1,3 +1,4 @@
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import type { GetStaticPropsResult } from 'next'
 import { Fragment } from 'react'
 
@@ -6,11 +7,9 @@ import { PageHeroTitle } from '@/components/PageHeroTitle'
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
-import type { PageParams } from '@/lib/core/navigation/types'
+import { lang, redmineId } from '~/config/imprint.config'
 
 function createImprintUrl() {
-  const redmineId = 9945
-  const lang = 'en'
   const url = new URL('https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php')
   url.searchParams.set('serviceID', String(redmineId))
   url.searchParams.set('outputLang', lang)
@@ -19,13 +18,16 @@ function createImprintUrl() {
 
 const imprintUrl = createImprintUrl()
 
-export type ImprintPageParamsInput = Record<string, never>
-export type ImprintPageParams = PageParams<ImprintPageParamsInput>
-export type ImprintPageProps = {
-  imprintHtml: string
+export namespace ImprintPage {
+  export type PathParamsInput = never
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export interface Props {
+    imprintHtml: string
+  }
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<ImprintPageProps>> {
+export async function getStaticProps(): Promise<GetStaticPropsResult<ImprintPage.Props>> {
   const imprintHtml = await fetch(imprintUrl).then((response) => {
     return response.text()
   })
@@ -37,7 +39,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<ImprintPage
   }
 }
 
-export default function ImprintPage(props: ImprintPageProps): JSX.Element {
+export default function ImprintPage(props: ImprintPage.Props): JSX.Element {
   const { imprintHtml } = props
 
   return (

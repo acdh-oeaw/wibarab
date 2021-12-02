@@ -1,15 +1,18 @@
+import type { StringParams } from '@stefanprobst/next-route-manifest'
 import { Fragment } from 'react'
 
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
-import type { PageParams } from '@/lib/core/navigation/types'
 
-export type InternalErrorPageParamsInput = Record<string, never>
-export type InternalErrorPageParams = PageParams<InternalErrorPageParamsInput>
-export type InternalErrorPageProps = Record<string, never>
+export namespace InternalErrorPage {
+  export type PathParamsInput = never
+  export type PathParams = StringParams<PathParamsInput>
+  export type SearchParamsInput = never
+  export type Props = Record<string, never>
+}
 
-export default function InternalErrorPage(_props: InternalErrorPageProps): JSX.Element {
+export default function InternalErrorPage(_props: InternalErrorPage.Props): JSX.Element {
   return (
     <Fragment>
       <PageMetadata nofollow noindex title="Error" />
