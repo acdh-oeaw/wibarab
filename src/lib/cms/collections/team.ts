@@ -23,5 +23,10 @@ export const collection: CmsCollection = {
       label: 'Bio',
       widget: 'text',
     },
+    {
+      name: 'avatar',
+      label: 'Avatar',
+      widget: 'image',
+    },
   ],
 }
