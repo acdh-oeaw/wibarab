@@ -2,13 +2,14 @@ import { useMemo } from 'react'
 
 import type { Href } from '@/lib/core/navigation/types'
 import { useRoute } from '@/lib/core/navigation/useRoute'
+import { removeTrailingSlash } from '@/lib/utils'
 
 export interface Matcher {
   (href: Href, route: URL): boolean
 }
 
 const isMatchingPathnames: Matcher = function isMatchingPathnames(href, route) {
-  return href.pathname === route.pathname
+  return removeTrailingSlash(href.pathname) === removeTrailingSlash(route.pathname)
 }
 
 export interface UseIsCurrentRouteArgs {
