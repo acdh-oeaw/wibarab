@@ -47,8 +47,8 @@ export const siteMetadata: SiteMetadata = {
   description:
     'The linguistic and socio-historical realities behind the millennia-old dichotomous concept of nomadic and sedentary people in the Middle East and North Africa',
   favicon: {
-    src: 'public/assets/images/logo-maskable.svg',
-    maskable: true,
+    src: 'public/assets/images/logo.webp',
+    maskable: false,
   },
   image: {
     src: 'public/android-chrome-512x512.png',
