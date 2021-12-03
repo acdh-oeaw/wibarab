@@ -6,6 +6,12 @@ export interface TeamMember {
   avatar: string | null
 }
 
+export interface ResearchItem {
+  title: string
+  description: string
+  document: string
+}
+
 export interface ArticleMetadataRaw {
   title: string
   date: string

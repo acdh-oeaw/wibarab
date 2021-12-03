@@ -5,6 +5,7 @@ const links = {
   Home: routes.HomePage(),
   Team: routes.TeamPage(),
   Blog: routes.BlogPage(),
+  Research: routes.ResearchPage(),
 }
 
 export function PageNavigation(): JSX.Element {

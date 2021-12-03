@@ -3,6 +3,7 @@ import type { ArticlePage } from '../../../pages/blog/[id].page.template'
 import type { BlogPage } from '../../../pages/blog/index.page'
 import type { ImprintPage } from '../../../pages/imprint.page'
 import type { HomePage } from '../../../pages/index.page'
+import type { ResearchPage } from '../../../pages/research.page'
 import type { TeamPage } from '../../../pages/team.page'
 
 export const routes = {
@@ -20,6 +21,9 @@ export const routes = {
   },
   HomePage(searchParams?: HomePage.SearchParamsInput) {
     return { pathname: `/`, query: searchParams }
+  },
+  ResearchPage(searchParams?: ResearchPage.SearchParamsInput) {
+    return { pathname: `/research`, query: searchParams }
   },
   TeamPage(searchParams?: TeamPage.SearchParamsInput) {
     return { pathname: `/team`, query: searchParams }

@@ -1,10 +1,12 @@
-import { promises as fs } from 'fs'
+import { existsSync, promises as fs } from 'fs'
 import * as path from 'path'
 
 import { teamExtension, teamFolderPath } from '@/lib/data/data.config'
 import type { TeamMember } from '@/lib/data/types'
 
 export async function getTeam(): Promise<Array<TeamMember>> {
+  if (!existsSync(teamFolderPath)) return []
+
   const folderEntries = await fs.readdir(teamFolderPath, { withFileTypes: true })
 
   const team = []
