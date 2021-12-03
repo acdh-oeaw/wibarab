@@ -1,12 +1,13 @@
 import type { CmsConfig } from 'netlify-cms-core'
 
 import { collection as blog } from '@/lib/cms/collections/blog'
+import { collection as research } from '@/lib/cms/collections/research'
 import { collection as sections } from '@/lib/cms/collections/sections'
 import { collection as team } from '@/lib/cms/collections/team'
 import { branch, repo, scope } from '~/config/cms.config'
 import { baseUrl } from '~/config/site.config'
 
-const collections = [blog, sections, team]
+const collections = [blog, sections, team, research]
 
 export const config: CmsConfig = {
   load_config_file: false,
