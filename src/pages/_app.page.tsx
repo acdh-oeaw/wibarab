@@ -33,7 +33,6 @@ export default function App(props: AppProps): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.webp" type="image/webp" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href={String(createSiteUrl({ pathname: webManifest }))} />
 
