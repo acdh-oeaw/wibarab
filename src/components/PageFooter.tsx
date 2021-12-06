@@ -34,6 +34,13 @@ export function PageFooter(): JSX.Element {
           </a>
         </small>
       </div>
+      <div className="grid items-center grid-cols-5 gap-6 my-8">
+        <img src="/assets/cms/images/institutslogo_farbe.jpg" alt="" className="object-contain" />
+        <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
+        <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
+        <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
+        <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
+      </div>
     </footer>
   )
 }
