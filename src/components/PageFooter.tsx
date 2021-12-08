@@ -37,7 +37,7 @@ export function PageFooter(): JSX.Element {
       <div className="grid items-center grid-cols-5 gap-6 my-8">
         <img src="/assets/cms/images/institutslogo_farbe.jpg" alt="Logo_Orientalistik" className="object-contain" />
         <img src="/assets/cms/images/erc_logo.png" alt="Logo_ERC" className="object-contain" />
-        <img src="/assets/cms/images/uni_logo_2016.png" alt="Logo_Univie" className="object-contain" />
+        <img src="/assets/cms/images/uni_logo_2016.png" alt="Logo_Univie" width="h14" className="object-contain" />
         <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
         <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
       </div>
