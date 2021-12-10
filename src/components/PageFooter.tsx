@@ -34,12 +34,22 @@ export function PageFooter(): JSX.Element {
           </a>
         </small>
       </div>
-      <div className="grid items-center grid-cols-5 gap-6 my-8">
-        <img src="/assets/cms/images/institutslogo_farbe.jpg" alt="Logo_Orientalistik" className="object-contain" />
-        <img src="/assets/cms/images/erc_logo.png" alt="Logo_ERC" className="object-contain" />
-        <img src="/assets/cms/images/uni_logo_2016.png" alt="Logo_Univie" width="600px" className="object-contain" />
-        <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
-        <img src="/assets/cms/images/erc_logo.png" alt="" className="object-contain" />
+      <div className="grid items-center grid-cols-3 gap-6 my-8">
+        <img
+          src="/assets/cms/images/institutslogo_farbe.jpg"
+          alt="Institute of Oriental Studies, University of Vienna"
+          className="object-contain"
+        />
+        <img
+          src="/assets/cms/images/erc_logo.png"
+          alt="European Research Council"
+          className="object-contain"
+        />
+        <img
+          src="/assets/cms/images/uni_logo_2016.png"
+          alt="University of Vienna"
+          className="object-contain"
+        />
       </div>
     </footer>
   )
