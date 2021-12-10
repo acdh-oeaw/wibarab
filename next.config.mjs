@@ -1,5 +1,6 @@
 import { RouteManifestPlugin } from '@stefanprobst/next-route-manifest'
 import createNextSvgPlugin from '@stefanprobst/next-svg'
+import prettierOptions from '@stefanprobst/prettier-config'
 // import withHeadingFragmentLinks from '@stefanprobst/rehype-fragment-links'
 import withImageCaptions from '@stefanprobst/rehype-image-captions'
 import withListsWithAriaRole from '@stefanprobst/rehype-lists-with-aria-role'
@@ -18,14 +19,18 @@ import withGfm from 'remark-gfm'
 
 /** @typedef {import('next').NextConfig} NextConfig */
 
+export const routeManifestConfig = {
+  outputFolder: path.join(process.cwd(), 'src', 'lib', 'core', 'navigation'),
+  pagesFolder: path.join(process.cwd(), 'src', 'pages'),
+  pageExtensions: ['page.tsx', 'page.template.tsx'],
+  prettierOptions,
+}
+
 /** @type {NextConfig} */
 const config = {
   eslint: {
     dirs: ['.'],
     // ignoreDuringBuilds: true,
-  },
-  future: {
-    strictPostcssConfiguration: true,
   },
   async headers() {
     return [
@@ -85,13 +90,7 @@ const config = {
 
     /** Auto-generate route manifest. */
     if (!options.isServer) {
-      config.plugins?.push(
-        new RouteManifestPlugin({
-          outputFolder: path.join(process.cwd(), 'src', 'lib', 'core', 'navigation'),
-          pagesFolder: path.join(process.cwd(), 'src', 'pages'),
-          pageExtensions: ['page.tsx', 'page.template.tsx'],
-        }),
-      )
+      config.plugins?.push(new RouteManifestPlugin(routeManifestConfig))
     }
 
     /**
