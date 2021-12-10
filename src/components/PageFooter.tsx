@@ -1,8 +1,16 @@
+import cx from 'clsx'
+import Image from 'next/image'
+
+import styles from '@/components/PageFooter.module.css'
 import { Link } from '@/lib/core/navigation/Link'
 import { routes } from '@/lib/core/navigation/routes'
 import { createSiteUrl } from '@/lib/utils'
 import { siteMetadata } from '~/config/metadata.config'
 import { feed } from '~/config/site.config'
+import AcdhChLogo from '~/public/assets/cms/images/acdh-ch_logo.svg?symbol'
+import ErcLogo from '~/public/assets/cms/images/erc_logo.svg?symbol'
+import InstituteLogo from '~/public/assets/cms/images/institutslogo_farbe.jpg'
+import UnivieLogo from '~/public/assets/cms/images/univie_logo.svg?symbol'
 
 const { creator } = siteMetadata
 
@@ -29,26 +37,36 @@ export function PageFooter(): JSX.Element {
           </Link>
         </small>
         <small>
-          <a href={String(createSiteUrl({ pathname: feed }))} target="_blank" rel="noreferrer">
+          <a
+            href={String(createSiteUrl({ pathname: feed }))}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-text-highlighted focus-visible:text-text-highlighted"
+          >
             RSS Feed
           </a>
         </small>
       </div>
-      <div className="grid items-center grid-cols-3 gap-6 my-8">
-        <img
-          src="/assets/cms/images/institutslogo_farbe.jpg"
-          alt="Institute of Oriental Studies, University of Vienna"
-          className="object-contain"
+      <div className="grid items-center grid-cols-4 gap-6 my-8">
+        <div className="relative w-full h-full">
+          <Image
+            src={InstituteLogo}
+            alt="Institute of Oriental Studies, University of Vienna"
+            objectFit="contain"
+            layout="fill"
+          />
+        </div>
+        <UnivieLogo
+          title="University of Vienna"
+          className={cx('object-contain w-full h-full', styles['themed-image-univie'])}
         />
-        <img
-          src="/assets/cms/images/erc_logo.png"
-          alt="European Research Council"
-          className="object-contain"
+        <AcdhChLogo
+          title="Austrian Centre for Digital Humanities and Cultural Heritage"
+          className={cx('object-contain w-full h-full', styles['themed-image-acdh-ch'])}
         />
-        <img
-          src="/assets/cms/images/uni_logo_2016.png"
-          alt="University of Vienna"
-          className="object-contain"
+        <ErcLogo
+          title="European Research Council"
+          className={cx('object-contain w-full h-full', styles['themed-image-erc'])}
         />
       </div>
     </footer>

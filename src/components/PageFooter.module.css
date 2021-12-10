@@ -1,0 +1,23 @@
+.themed-image-univie {
+  color: hsl(0deg 0% 0%);
+}
+
+[data-theme='dark'] .themed-image-univie {
+  color: hsl(0deg 0% 100%);
+}
+
+.themed-image-acdh-ch {
+  color: hsl(0deg 0% 0%);
+}
+
+[data-theme='dark'] .themed-image-acdh-ch {
+  color: hsl(0deg 0% 100%);
+}
+
+.themed-image-erc {
+  color: hsl(345deg 6% 13%);
+}
+
+[data-theme='dark'] .themed-image-erc {
+  color: hsl(0deg 0% 100%);
+}
