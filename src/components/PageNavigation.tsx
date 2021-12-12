@@ -11,13 +11,13 @@ const links = {
 export function PageNavigation(): JSX.Element {
   return (
     <nav>
-      <ul className="flex gap-8 text-text">
+      <ul className="flex gap-4 text-text xs:gap-8">
         {Object.entries(links).map(([label, href]) => {
           return (
             <li key={href.pathname}>
               <NavLink
                 href={href}
-                className="relative py-2 border-b border-transparent after:absolute after:-inset-x-2 after:inset-y-0 hover:text-text-highlighted focus-visible:text-text-highlighted"
+                className="relative py-2 text-sm border-b border-transparent xs:text-base after:absolute after:-inset-x-2 after:inset-y-0 hover:text-text-highlighted focus-visible:text-text-highlighted"
                 activeClassName="border-current"
               >
                 {label}
