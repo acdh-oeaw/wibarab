@@ -1,3 +1,11 @@
+.themed-image-oriental-studies {
+  color: hsl(0deg 0% 18%);
+}
+
+[data-theme='dark'] .themed-image-oriental-studies {
+  color: hsl(0deg 0% 100%);
+}
+
 .themed-image-univie {
   color: hsl(0deg 0% 0%);
 }

@@ -1,5 +1,4 @@
 import cx from 'clsx'
-import Image from 'next/image'
 
 import styles from '@/components/PageFooter.module.css'
 import { Link } from '@/lib/core/navigation/Link'
@@ -9,7 +8,7 @@ import { siteMetadata } from '~/config/metadata.config'
 import { feed } from '~/config/site.config'
 import AcdhChLogo from '~/public/assets/cms/images/acdh-ch_logo.svg?symbol'
 import ErcLogo from '~/public/assets/cms/images/erc_logo.svg?symbol'
-import InstituteLogo from '~/public/assets/cms/images/institutslogo_farbe.jpg'
+import InstituteOfOrientalStudiesLogo from '~/public/assets/cms/images/institute-of-oriental-studies_logo.svg?symbol'
 import UnivieLogo from '~/public/assets/cms/images/univie_logo.svg?symbol'
 
 const { creator } = siteMetadata
@@ -48,14 +47,10 @@ export function PageFooter(): JSX.Element {
         </small>
       </div>
       <div className="grid items-center grid-cols-4 gap-6 my-8">
-        <div className="relative w-full h-full">
-          <Image
-            src={InstituteLogo}
-            alt="Institute of Oriental Studies, University of Vienna"
-            objectFit="contain"
-            layout="fill"
-          />
-        </div>
+        <InstituteOfOrientalStudiesLogo
+          title="Institute of Oriental Studies, University of Vienna"
+          className={cx('object-contain w-full h-full', styles['themed-image-oriental-studies'])}
+        />
         <UnivieLogo
           title="University of Vienna"
           className={cx('object-contain w-full h-full', styles['themed-image-univie'])}
