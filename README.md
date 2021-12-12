@@ -53,6 +53,12 @@ yarn
 yarn dev
 ```
 
+Alternatively, you can run a development build with Docker:
+
+```bash
+yarn docker:dev
+```
+
 #### Run production build
 
 ```bash

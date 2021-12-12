@@ -7,6 +7,7 @@
     "cm": "git-cz",
     "cms:server": "netlify-cms-proxy-server",
     "dev": "next dev",
+    "docker:dev": "docker run --rm --init -v `pwd`:/app -w /app -p 3000:3000 node:14-slim yarn dev",
     "format": "prettier . --list-different --ignore-path .gitignore --loglevel warn",
     "format:fix": "yarn run format --write",
     "generate:cms-preview-styles": "cross-env NODE_OPTIONS='--experimental-vm-modules' npx tsm scripts/generate-cms-preview-styles.ts",
