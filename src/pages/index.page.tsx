@@ -25,7 +25,7 @@ export default function HomePage(_props: HomePage.Props): JSX.Element {
       <PageMetadata title="Home" />
       <PageMainContent>
         <PageHeroSection>
-          <PageHeroTitle>What is bedouin-type Arabic?</PageHeroTitle>
+          <PageHeroTitle>What is Bedouin-type Arabic?</PageHeroTitle>
           <PageHeroLeadIn>
             The linguistic and socio-historical realities behind the millennia-old dichotomous
             concept of nomadic and sedentary people in the Middle East and North Africa
