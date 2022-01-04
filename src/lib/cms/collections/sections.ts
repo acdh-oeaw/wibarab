@@ -11,6 +11,22 @@ export const collection: CmsCollection = {
   extension: 'mdx',
   files: [
     {
+      name: 'intro',
+      label: 'Introduction',
+      file: 'src/components/home/Intro.mdx',
+      fields: [
+        {
+          name: 'title',
+          label: 'Title',
+        },
+        {
+          name: 'body',
+          label: 'Content',
+          widget: 'markdown',
+        },
+      ],
+    },
+    {
       name: 'about',
       label: 'About the project',
       file: 'src/components/home/About.mdx',

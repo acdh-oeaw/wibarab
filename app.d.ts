@@ -1,6 +1,6 @@
 /// <reference types="@stefanprobst/next-svg/types" />
 
-declare module '@/components/home/About.mdx' {
+declare module '@/components/home/*.mdx' {
   import type { MDXProps } from 'mdx/types'
 
   export const metadata: { title: string }
