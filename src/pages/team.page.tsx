@@ -41,7 +41,7 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
       <PageMainContent>
         <PageHeroSection>
           <PageHeroTitle>Team members</PageHeroTitle>
-          <PageHeroLeadIn>The project&apos;s core team is composed of six specialists in Arabic linguistics: the principal investigator (PI), one postdoctoral researcher specialized in linguistics, and four PhD candidates. A second postdoctoral researcher specialized in the history of the Bedouins will be taken on board after the first year. WIBARAB also benefits from the work of an IT specialist and two MA students who will mainly feed the database. The Vienna-based team is supported by research partners in the Arab countries.</PageHeroLeadIn>
+          <PageHeroLeadIn>The project&apos;s core team is composed of six specialists in Arabic linguistics: the principal investigator (PI), one postdoctoral researcher specialized in linguistics, and four PhD candidates. A second postdoctoral researcher specialized in the history of the Bedouins will be taken on board after the first year. WIBARAB also benefits from the work of IT specialists from the Austrian Academy of Sciences and two MA students who will mainly feed the database. The Vienna-based team is supported by research partners in the Arab countries.</PageHeroLeadIn>
         </PageHeroSection>
         <PageSection>
           <PageSectionTitle>Team</PageSectionTitle>
