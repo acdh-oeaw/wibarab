@@ -47,6 +47,10 @@ export function PageFooter(): JSX.Element {
         </small>
       </div>
       <div className="grid items-center grid-cols-2 gap-6 my-8 xs:grid-cols-4">
+         <ErcLogo
+          title="European Research Council"
+          className={cx('object-contain w-full h-full', styles['themed-image-erc'])}
+        />
         <InstituteOfOrientalStudiesLogo
           title="Institute of Oriental Studies, University of Vienna"
           className={cx('object-contain w-full h-full', styles['themed-image-oriental-studies'])}
@@ -58,10 +62,6 @@ export function PageFooter(): JSX.Element {
         <AcdhChLogo
           title="Austrian Centre for Digital Humanities and Cultural Heritage"
           className={cx('object-contain w-full h-full', styles['themed-image-acdh-ch'])}
-        />
-        <ErcLogo
-          title="European Research Council"
-          className={cx('object-contain w-full h-full', styles['themed-image-erc'])}
         />
       </div>
     </footer>
