@@ -17,6 +17,7 @@ const CMS = dynamic(
 
     CMS.registerPreviewTemplate('blog', memo(ArticlePagePreview))
     CMS.registerPreviewTemplate('about', memo(SectionPreview))
+    CMS.registerPreviewTemplate('intro', memo(SectionPreview))
 
     CMS.init({ config })
 
