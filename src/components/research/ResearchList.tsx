@@ -9,7 +9,7 @@ export function ResearchList(props: ResearchListProps): JSX.Element {
   const { research } = props
 
   if (research.length === 0) {
-    return <p>Nothing to see yet!</p>
+    return <p>Documents will follow soon!</p>
   }
 
   return (
