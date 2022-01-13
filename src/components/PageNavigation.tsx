@@ -11,7 +11,7 @@ const links = {
 export function PageNavigation(): JSX.Element {
   return (
     <nav>
-      <ul className="flex flex-wrap gap-4 text-text xs:gap-8">
+      <ul className="flex flex-wrap gap-4 py-2 text-text xs:gap-8">
         {Object.entries(links).map(([label, href]) => {
           return (
             <li key={href.pathname}>
