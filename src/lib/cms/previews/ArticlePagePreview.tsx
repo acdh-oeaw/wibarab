@@ -25,9 +25,9 @@ export function ArticlePagePreview(props: ArticlePagePreviewProps): JSX.Element 
       .filter(Boolean) || []
   const date = entry.getIn(['data', 'date']) || new Date().toISOString()
   const content = entry.getIn(['data', 'body'])
-  const featuredImageAsset = getAsset(entry.getIn(['data', 'featuredImage']))
-  /** There is no easy way to get the image dimensions from the 'blob:' url, unfortunately. */
-  const featuredImage = String(featuredImageAsset)
+  const featuredImageMetadata = entry.getIn(['data', 'featuredImage'])
+  const featuredImage =
+    featuredImageMetadata != null ? String(getAsset(featuredImageMetadata)) : null
   const abstract = entry.getIn(['data', 'abstract'])
 
   const metadata = { id: 'preview', title, leadIn, authors, date, featuredImage, abstract }
