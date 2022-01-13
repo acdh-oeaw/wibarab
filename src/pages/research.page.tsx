@@ -41,7 +41,10 @@ export default function ResearchPage(props: ResearchPage.Props): JSX.Element {
       <PageMainContent>
         <PageHeroSection>
           <PageHeroTitle>Research</PageHeroTitle>
-          <PageHeroLeadIn>For the time being, we have no project-related publications or pre-papers. We hope that we are able to upload first results soon.</PageHeroLeadIn>
+          <PageHeroLeadIn>
+            For the time being, we have no project-related publications or pre-papers. We hope that
+            we are able to upload first results soon.
+          </PageHeroLeadIn>
         </PageHeroSection>
         <PageSection>
           <PageSectionTitle>Documents</PageSectionTitle>

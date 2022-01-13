@@ -47,7 +47,7 @@ export function PageFooter(): JSX.Element {
         </small>
       </div>
       <div className="grid items-center grid-cols-2 gap-6 my-8 xs:grid-cols-4">
-         <ErcLogo
+        <ErcLogo
           title="European Research Council"
           className={cx('object-contain w-full h-full', styles['themed-image-erc'])}
         />
