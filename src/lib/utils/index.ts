@@ -1,5 +1,6 @@
 export { createSiteUrl } from '@/lib/utils/createSiteUrl'
 export { formatDate } from '@/lib/utils/formatDate'
-export { isNonEmptyString } from '@/lib/utils/isNonEmptyString'
 export { log } from '@/lib/utils/log'
 export { removeTrailingSlash } from '@/lib/utils/removeTrailingSlash'
+export { isAbsoluteUrl } from '@stefanprobst/is-absolute-url'
+export { isNonEmptyString } from '@stefanprobst/is-nonempty-string'

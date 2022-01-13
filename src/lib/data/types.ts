@@ -1,3 +1,5 @@
+type UrlString = string
+
 export interface TeamMember {
   id: string
   name: string
@@ -27,9 +29,10 @@ export interface ArticlePreview extends Pick<ArticleMetadataRaw, 'abstract' | 'd
 }
 
 export interface ArticleMetadata
-  extends Pick<ArticleMetadataRaw, 'abstract' | 'date' | 'featuredImage' | 'leadIn' | 'title'> {
+  extends Pick<ArticleMetadataRaw, 'abstract' | 'date' | 'leadIn' | 'title'> {
   id: string
   authors: Array<Pick<TeamMember, 'name'>>
+  featuredImage: StaticImageData | UrlString | null
 }
 
 export interface Article extends ArticleMetadata {

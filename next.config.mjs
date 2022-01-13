@@ -1,16 +1,22 @@
+import { isAbsoluteUrl } from '@stefanprobst/is-absolute-url'
+import { isNonEmptyString } from '@stefanprobst/is-nonempty-string'
+/* @ts-expect-error TypeScript does not yet underline non-top-level package exports. */
+// eslint-disable-next-line import/no-unresolved
+import getImageMetadata from '@stefanprobst/next-image-loader/generate'
 import { RouteManifestPlugin } from '@stefanprobst/next-route-manifest'
 import createNextSvgPlugin from '@stefanprobst/next-svg'
 import prettierOptions from '@stefanprobst/prettier-config'
 // import withHeadingFragmentLinks from '@stefanprobst/rehype-fragment-links'
 import withImageCaptions from '@stefanprobst/rehype-image-captions'
 import withListsWithAriaRole from '@stefanprobst/rehype-lists-with-aria-role'
+import withNextImage from '@stefanprobst/rehype-next-image'
 import withNextLinks from '@stefanprobst/rehype-next-links'
 import withNoReferrerLinks from '@stefanprobst/rehype-noreferrer-links'
 import withParsedFrontmatter from '@stefanprobst/remark-extract-yaml-frontmatter'
 import withParsedFrontmatterExport from '@stefanprobst/remark-extract-yaml-frontmatter/mdx'
 import withPage from '@stefanprobst/remark-mdx-page'
 import withSmartQuotes from '@stefanprobst/remark-smart-quotes'
-import * as fs from 'fs'
+import { promises as fs, readdirSync, readFileSync } from 'fs'
 // import { h } from 'hastscript'
 import * as path from 'path'
 import withHeadingIds from 'rehype-slug'
@@ -54,6 +60,9 @@ const config = {
         ],
       },
     ]
+  },
+  images: {
+    deviceSizes: [400, 640, 880],
   },
   async rewrites() {
     return [
@@ -101,7 +110,7 @@ const config = {
       const teamExtension = '.json'
       const teamFolderPath = path.join(process.cwd(), 'src', 'components', 'team', 'data')
 
-      const folderEntries = fs.readdirSync(teamFolderPath, { withFileTypes: true })
+      const folderEntries = readdirSync(teamFolderPath, { withFileTypes: true })
 
       const team = new Map()
 
@@ -109,7 +118,7 @@ const config = {
         if (folderEntry.isFile() && folderEntry.name.endsWith(teamExtension)) {
           const id = folderEntry.name.slice(0, -teamExtension.length)
           const filePath = path.join(teamFolderPath, folderEntry.name)
-          const metadata = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }))
+          const metadata = JSON.parse(readFileSync(filePath, { encoding: 'utf-8' }))
 
           const teamMember = {
             id,
@@ -148,6 +157,7 @@ const config = {
             rehypePlugins: [
               withNoReferrerLinks,
               withNextLinks,
+              withNextImage,
               withImageCaptions,
               withListsWithAriaRole,
               withHeadingIds,
@@ -193,14 +203,38 @@ const config = {
               [
                 withParsedFrontmatter,
                 {
-                  transform(
+                  async transform(
                     /** @type {import('@/lib/data/types').ArticleMetadataRaw} */ frontmatter,
+                    /** @type {import('vfile').VFile} */ file,
                   ) {
+                    const authors = frontmatter.authors.map((id) => {
+                      return team.get(id)
+                    })
+
+                    /** @type {(featuredImage: string) => Promise<{ width: number; height: number; blurDataURL?: string }>} */
+                    async function getImageData(featuredImage) {
+                      const filePath =
+                        !path.isAbsolute(featuredImage) && file.dirname != null
+                          ? path.join(file.dirname, featuredImage)
+                          : path.join(process.cwd(), 'public', featuredImage)
+                      const buffer = await fs.readFile(filePath)
+
+                      return getImageMetadata(buffer, path.extname(filePath).slice(1))
+                    }
+
+                    const featuredImage = isNonEmptyString(frontmatter.featuredImage)
+                      ? isAbsoluteUrl(frontmatter.featuredImage)
+                        ? frontmatter.featuredImage
+                        : {
+                            src: frontmatter.featuredImage,
+                            ...(await getImageData(frontmatter.featuredImage)),
+                          }
+                      : null
+
                     return {
                       ...frontmatter,
-                      authors: frontmatter.authors.map((id) => {
-                        return team.get(id)
-                      }),
+                      authors,
+                      featuredImage,
                     }
                   },
                 },
@@ -212,6 +246,7 @@ const config = {
             rehypePlugins: [
               withNoReferrerLinks,
               withNextLinks,
+              withNextImage,
               withImageCaptions,
               withListsWithAriaRole,
               withHeadingIds,
@@ -223,8 +258,11 @@ const config = {
                 /** @type {import('@stefanprobst/remark-mdx-page').Options} */
                 ({
                   template: articlePageTemplate,
-                  imports: ['import { Link } from "@/lib/core/navigation/Link"'],
-                  props: '{ components: { Link }, metadata }',
+                  imports: [
+                    'import { Image } from "@/components/Image"',
+                    'import { Link } from "@/lib/core/navigation/Link"',
+                  ],
+                  props: '{ components: { Image, Link }, metadata }',
                 }),
               ],
             ],

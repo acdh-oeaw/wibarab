@@ -1235,6 +1235,11 @@
   resolved "https://registry.npmjs.org/@stefanprobst/is-absolute-url/-/is-absolute-url-1.0.1.tgz#1c707240c23a5048bd407085faf9f86030aace17"
   integrity sha512-g3ZJL7qWJ1r2qpkkA1pyRXLXbzTaAbYF1iL0eS1ISAsuvsuqePQtlTCLIiIHE+efzha+AudMm2HAbL9GENaafQ==
 
+"@stefanprobst/is-nonempty-string@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@stefanprobst/is-nonempty-string/-/is-nonempty-string-1.0.0.tgz#82a9190078004e4ad4a430e547a0770c05b5ecec"
+  integrity sha512-3ZHlmJCxey3SqnPMaOTCq52UTyeE0IlmunLQ2Xrn6bE6bm5x5Et/FPO0qJrJ184f/RSPiS1hFcuMV+RulqiAmg==
+
 "@stefanprobst/log@^1.0.1":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@stefanprobst/log/-/log-1.0.1.tgz#d1101b50d2bfcb15a13d5ce6e79599a91ed17030"
@@ -1246,6 +1251,11 @@
   integrity sha512-8IScHyhmvZgYBGHkE827f93dweG4p7ZR1L41QMWlo26DFrZfpHnkwY8HOX8QRmAf/DUJilCE3aSm5FGIQGmF8g==
   dependencies:
     "@stefanprobst/assert" "^1.0.1"
+
+"@stefanprobst/next-image-loader@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@stefanprobst/next-image-loader/-/next-image-loader-1.0.3.tgz#1bdb78f404b67b7b8b7c3ed6141d55560c7dba39"
+  integrity sha512-cFtdobPzqSq7Rp/zmiIcm+p2hrDeB/cmEjLTnqqaYDNQQ+BAA1Lo6/PojqFrE2i1ekHPameKFtDRRpyg8d0WAA==
 
 "@stefanprobst/next-page-metadata@^2.0.5":
   version "2.0.5"
@@ -1314,6 +1324,16 @@
     unified "^10.1.1"
     unist-util-visit "^4.1.0"
 
+"@stefanprobst/rehype-next-image@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@stefanprobst/rehype-next-image/-/rehype-next-image-1.0.0.tgz#ebe1f51f212e73cc67fe20a9ce6b3190f0923e13"
+  integrity sha512-KxSrPR1tzyPL3YYOarHFZRf1SByZjyIwR217/arySdX0ObcG9nPmb8vL07YIMd+6hggN9nwWzrqUi2tawLcrqA==
+  dependencies:
+    "@stefanprobst/is-absolute-url" "^1.0.1"
+    "@types/hast" "^2.3.4"
+    unified "^10.1.1"
+    unist-util-visit "^4.1.0"
+
 "@stefanprobst/rehype-next-links@^2.0.1":
   version "2.0.1"
   resolved "https://registry.npmjs.org/@stefanprobst/rehype-next-links/-/rehype-next-links-2.0.1.tgz#c165188638f9969435c38dfd2bde01e72a9dd4a1"
@@ -1334,10 +1354,10 @@
     unified "^10.1.1"
     unist-util-visit "^4.1.0"
 
-"@stefanprobst/remark-extract-yaml-frontmatter@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/@stefanprobst/remark-extract-yaml-frontmatter/-/remark-extract-yaml-frontmatter-2.2.1.tgz#faae37ec4e48751e6a1b8bd9afd55749a2ba9120"
-  integrity sha512-B84ORlQwyLUfCu3ufbzYV7OwQG1nt2yvm8zrRuTyNlSCiarPDaDaL3LY//o7p0HPB0b5rjp9fgd9YEG6vRXnYw==
+"@stefanprobst/remark-extract-yaml-frontmatter@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.npmjs.org/@stefanprobst/remark-extract-yaml-frontmatter/-/remark-extract-yaml-frontmatter-2.2.3.tgz#90552d12e37421b968c7f185efccd2e9923430e1"
+  integrity sha512-YFrFluBluzbdSx+b55HU5FP8A2vHnDhyCxuCg9o/d23y4kl/DK78LJBvXj6v5AiVQd4Wtp6sZ12uE3e5CEtTZg==
   dependencies:
     estree-util-is-identifier-name "^2.0.0"
     estree-util-value-to-estree "^1.3.0"

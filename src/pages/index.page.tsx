@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 
 import AboutSection, { metadata as aboutSectionMetadata } from '@/components/home/About.mdx'
 import IntroSection from '@/components/home/Intro.mdx'
+import { Image } from '@/components/Image'
 import { PageHeroLeadIn } from '@/components/PageHeroLeadIn'
 import { PageHeroSection } from '@/components/PageHeroSection'
 import { PageHeroTitle } from '@/components/PageHeroTitle'
@@ -41,7 +42,7 @@ export default function HomePage(_props: HomePage.Props): JSX.Element {
         <PageSection>
           <PageSectionTitle>{aboutSectionMetadata.title}</PageSectionTitle>
           <div className="prose">
-            <AboutSection components={{ Link }} />
+            <AboutSection components={{ Image, Link }} />
           </div>
         </PageSection>
       </PageMainContent>

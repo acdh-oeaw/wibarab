@@ -17,7 +17,7 @@ export function SectionPreview(props: SectionPreviewProps): JSX.Element {
   return (
     <Preview>
       <Spacer />
-      <PageSection>
+      <PageSection isPreview={true}>
         <PageSectionTitle>{title}</PageSectionTitle>
         <div className="prose">
           <Mdx mdx={content} />
