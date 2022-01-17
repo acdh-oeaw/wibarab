@@ -2,6 +2,7 @@ import type { StringParams } from '@stefanprobst/next-route-manifest'
 import type { GetStaticPropsResult } from 'next'
 import { Fragment } from 'react'
 
+import { Image } from '@/components/Image'
 import { PageHeroLeadIn } from '@/components/PageHeroLeadIn'
 import { PageHeroSection } from '@/components/PageHeroSection'
 import { PageHeroTitle } from '@/components/PageHeroTitle'
@@ -12,6 +13,7 @@ import { TeamMembersList } from '@/components/team/TeamMembersList'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import { getTeam } from '@/lib/data/team'
 import type { TeamMember } from '@/lib/data/types'
+import TeamImage from '~/public/assets/cms/images/wibarab_team.png'
 
 export namespace TeamPage {
   export type PathParamsInput = never
@@ -53,6 +55,12 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
         </PageHeroSection>
         <PageSection>
           <PageSectionTitle>Team</PageSectionTitle>
+          <Image
+            src={TeamImage}
+            alt="WIBARAB Team members"
+            className="rounded !grayscale"
+            quality={100}
+          />
           <TeamMembersList team={team} />
         </PageSection>
       </PageMainContent>

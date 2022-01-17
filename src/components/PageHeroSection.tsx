@@ -5,5 +5,5 @@ export interface PageHeroSectionProps {
 }
 
 export function PageHeroSection(props: PageHeroSectionProps): JSX.Element {
-  return <div className="page-section py-32 gap-y-6">{props.children}</div>
+  return <div className="pt-16 pb-16 sm:pt-32 page-section gap-y-6">{props.children}</div>
 }
