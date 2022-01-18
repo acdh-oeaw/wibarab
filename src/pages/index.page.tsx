@@ -47,6 +47,13 @@ export default function HomePage(_props: HomePage.Props): JSX.Element {
             <AboutSection components={{ Image, Link }} />
           </div>
         </PageSection>
+        <Spacer />
+        <PageSection>
+          <PageSectionTitle>Contact</PageSectionTitle>
+          <div className="prose">
+          <p>Contact us at <a href="mailto:wibarab@oeaw.ac.at">wibarab@oeaw.ac.at</a>.</p>
+  </div>
+</PageSection>
       </PageMainContent>
     </Fragment>
   )
