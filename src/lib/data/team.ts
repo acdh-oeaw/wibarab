@@ -2,10 +2,10 @@ import { existsSync, promises as fs } from 'fs'
 import * as path from 'path'
 
 import { teamExtension, teamFolderPath } from '@/lib/data/data.config'
-import type { TeamMember } from '@/lib/data/types'
+import type { TeamMember, TeamRole } from '@/lib/data/types'
 
-export async function getTeam(): Promise<Array<TeamMember>> {
-  if (!existsSync(teamFolderPath)) return []
+export async function getTeam(): Promise<Record<TeamRole, Array<TeamMember>>> {
+  if (!existsSync(teamFolderPath)) return { core: [], additional: [] }
 
   const folderEntries = await fs.readdir(teamFolderPath, { withFileTypes: true })
 
@@ -24,7 +24,13 @@ export async function getTeam(): Promise<Array<TeamMember>> {
     return a.name.localeCompare(b.name)
   })
 
-  return team
+  const grouped: Record<TeamRole, Array<TeamMember>> = { core: [], additional: [] }
+
+  team.forEach((teamMember) => {
+    grouped[teamMember.role].push(teamMember)
+  })
+
+  return grouped
 }
 
 export async function getTeamMember(id: string): Promise<TeamMember> {
@@ -37,7 +43,7 @@ export async function getTeamMember(id: string): Promise<TeamMember> {
     name: metadata.name,
     bio: metadata.bio,
     email: metadata.email,
-    avatar: metadata.avatar ?? null,
+    role: metadata.role,
   }
 
   return teamMember

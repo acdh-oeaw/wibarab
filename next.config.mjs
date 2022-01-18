@@ -79,6 +79,8 @@ const config = {
     // ignoreBuildErrors: true,
   },
   webpack(config, options) {
+    config.infrastructureLogging = { level: 'error' }
+
     /**
      * @see https://github.com/vercel/next.js/issues/17806
      */
@@ -125,7 +127,7 @@ const config = {
             name: metadata.name,
             bio: metadata.bio,
             email: metadata.email,
-            avatar: metadata.avatar,
+            role: metadata.role,
           }
 
           team.set(id, teamMember)
