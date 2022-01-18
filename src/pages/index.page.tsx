@@ -13,6 +13,7 @@ import { PageSectionTitle } from '@/components/PageSectionTitle'
 import { Spacer } from '@/components/Spacer'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import { Link } from '@/lib/core/navigation/Link'
+import ProjectLogo from '~/public/assets/cms/images/wibarab_logo.png'
 
 export namespace HomePage {
   export type PathParamsInput = never
@@ -32,6 +33,7 @@ export default function HomePage(_props: HomePage.Props): JSX.Element {
             The linguistic and socio-historical realities behind the millennia-old dichotomous
             concept of nomadic and sedentary people in the Middle East and North Africa
           </PageHeroLeadIn>
+          <Image src={ProjectLogo} alt="Project logo" />
         </PageHeroSection>
         <PageSection>
           <div className="prose">
