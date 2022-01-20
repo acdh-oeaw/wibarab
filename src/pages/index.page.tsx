@@ -52,7 +52,7 @@ export default function HomePage(_props: HomePage.Props): JSX.Element {
           <PageSectionTitle>Contact</PageSectionTitle>
           <div className="prose">
             <p>
-              Contact us at <a href="mailto:wibarab@oeaw.ac.at">wibarab@oeaw.ac.at</a>.
+              Contact us at <a href="mailto:wibarab@oeaw.ac.at">wibarab@oeaw.ac.at</a> or follow us on <a href="https://twitter.com/wibarab">Twitter</a>.
             </p>
           </div>
         </PageSection>
