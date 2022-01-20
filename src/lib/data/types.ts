@@ -1,11 +1,13 @@
 type UrlString = string
 
+export type TeamRole = 'core' | 'extended'
+
 export interface TeamMember {
   id: string
   name: string
   email: string
   bio: string
-  avatar: string | null
+  role: TeamRole
 }
 
 export interface ResearchItem {

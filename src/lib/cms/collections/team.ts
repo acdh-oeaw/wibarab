@@ -24,10 +24,14 @@ export const collection: CmsCollection = {
       widget: 'text',
     },
     {
-      name: 'avatar',
-      label: 'Avatar',
-      widget: 'image',
-      required: false,
+      name: 'role',
+      label: 'Role',
+      widget: 'select',
+      default: 'core',
+      options: [
+        { value: 'core', label: 'Core team' },
+        { value: 'extended', label: 'Extended team' },
+      ],
     },
   ],
 }

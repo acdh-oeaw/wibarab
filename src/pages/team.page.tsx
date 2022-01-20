@@ -9,10 +9,11 @@ import { PageHeroTitle } from '@/components/PageHeroTitle'
 import { PageMainContent } from '@/components/PageMainContent'
 import { PageSection } from '@/components/PageSection'
 import { PageSectionTitle } from '@/components/PageSectionTitle'
+import { Spacer } from '@/components/Spacer'
 import { TeamMembersList } from '@/components/team/TeamMembersList'
 import { PageMetadata } from '@/lib/core/metadata/PageMetadata'
 import { getTeam } from '@/lib/data/team'
-import type { TeamMember } from '@/lib/data/types'
+import type { TeamMember, TeamRole } from '@/lib/data/types'
 import TeamImage from '~/public/assets/cms/images/wibarab_team.png'
 
 export namespace TeamPage {
@@ -20,7 +21,7 @@ export namespace TeamPage {
   export type PathParams = StringParams<PathParamsInput>
   export type SearchParamsInput = never
   export interface Props {
-    team: Array<TeamMember>
+    team: Record<TeamRole, Array<TeamMember>>
   }
 }
 
@@ -54,14 +55,21 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
           </PageHeroLeadIn>
         </PageHeroSection>
         <PageSection>
-          <PageSectionTitle>Team</PageSectionTitle>
-          <Image
-            src={TeamImage}
-            alt="WIBARAB Team members"
-            className="rounded !grayscale"
-            quality={100}
-          />
-          <TeamMembersList team={team} />
+          <PageSectionTitle>Core team</PageSectionTitle>
+          <div className="mb-6">
+            <Image
+              src={TeamImage}
+              alt="WIBARAB Team members"
+              className="rounded !grayscale opacity-90"
+              quality={100}
+            />
+          </div>
+          <TeamMembersList team={team.core} />
+        </PageSection>
+        <Spacer />
+        <PageSection>
+          <PageSectionTitle>Extended team</PageSectionTitle>
+          <TeamMembersList team={team.extended} />
         </PageSection>
       </PageMainContent>
     </Fragment>
