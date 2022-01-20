@@ -30,7 +30,7 @@ export const collection: CmsCollection = {
       default: 'core',
       options: [
         { value: 'core', label: 'Core team' },
-        { value: 'additional', label: 'Additional staff' },
+        { value: 'extended', label: 'Extended team' },
       ],
     },
   ],

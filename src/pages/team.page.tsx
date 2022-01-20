@@ -68,8 +68,8 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
         </PageSection>
         <Spacer />
         <PageSection>
-          <PageSectionTitle>Additional staff</PageSectionTitle>
-          <TeamMembersList team={team.additional} />
+          <PageSectionTitle>Extended team</PageSectionTitle>
+          <TeamMembersList team={team.extended} />
         </PageSection>
       </PageMainContent>
     </Fragment>

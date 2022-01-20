@@ -1,6 +1,6 @@
 type UrlString = string
 
-export type TeamRole = 'additional' | 'core'
+export type TeamRole = 'core' | 'extended'
 
 export interface TeamMember {
   id: string
