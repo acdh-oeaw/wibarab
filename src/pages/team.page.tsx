@@ -52,7 +52,7 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
             principal investigator (PI), one postdoctoral researcher specialized in linguistics, and
             four PhD candidates. A second postdoctoral researcher specialized in the history of the
             Bedouins will be taken on board after the first year. WIBARAB also benefits from the
-            work of IT specialists from the Austrian Academy of Sciences and two MA students who
+            knowledge and work of Digital Humanities specialists from the Austrian Academy of Sciences. Two MA students 
             will mainly feed the database. The Vienna-based team is supported by research partners
             in the Arab countries.
           </p>
