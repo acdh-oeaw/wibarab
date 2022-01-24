@@ -44,18 +44,18 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
       <PageMainContent>
         <PageHeroSection>
           <PageHeroTitle>Team members</PageHeroTitle>
-          <PageHeroLeadIn>
-            Arabic linguists and Digital humanists 
-          </PageHeroLeadIn>
-          <p>
-            The project&apos;s core team is composed of six specialists in Arabic linguistics: the
-            principal investigator (PI), one postdoctoral researcher specialized in linguistics, and
-            four PhD candidates. A second postdoctoral researcher specialized in the history of the
-            Bedouins will be taken on board after the first year. WIBARAB also benefits from the
-            knowledge and work of Digital Humanities specialists from the Austrian Academy of Sciences. Two MA students 
-            will mainly feed the database. The Vienna-based team is supported by research partners
-            in the Arab countries.
-          </p>
+          <PageHeroLeadIn>Arabic linguists and Digital humanists</PageHeroLeadIn>
+          <div className="prose">
+            <p>
+              The project&apos;s core team is composed of six specialists in Arabic linguistics: the
+              principal investigator (PI), one postdoctoral researcher specialized in linguistics,
+              and four PhD candidates. A second postdoctoral researcher specialized in the history
+              of the Bedouins will be taken on board after the first year. WIBARAB also benefits
+              from the knowledge and work of Digital Humanities specialists from the Austrian
+              Academy of Sciences. Two MA students will mainly feed the database. The Vienna-based
+              team is supported by research partners in the Arab countries.
+            </p>
+          </div>
         </PageHeroSection>
         <PageSection>
           <PageSectionTitle>Core team</PageSectionTitle>
