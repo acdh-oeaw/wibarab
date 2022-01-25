@@ -48,7 +48,7 @@ jobs:
             NEXT_PUBLIC_GIT_REPO=${{ github.repository }}
             NEXT_PUBLIC_GIT_BRANCH=main
             NEXT_PUBLIC_MATOMO_BASE_URL=https://matomo.acdh.oeaw.ac.at
-            NEXT_PUBLIC_MATOMO_ID=
+            NEXT_PUBLIC_MATOMO_ID=204
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
