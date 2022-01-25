@@ -1,12 +1,12 @@
 # WIBARAB Website
 
 This is the website for the project "What is bedouin-type Arabic?" (WIBARAB), deployed at
-<https://wibarab.acdh-dev.oeaw.ac.at>.
+<https://wibarab.acdh.oeaw.ac.at>.
 
 ## Adding and editing content
 
 The primary way to add and edit website content is via the CMS at
-<https://wibarab.acdh-dev.oeaw.ac.at/admin>.
+<https://wibarab.acdh.oeaw.ac.at/admin>.
 
 If you prefer to edit files directly in your text editor, you can:
 
