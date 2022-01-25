@@ -2,11 +2,13 @@ import 'tailwindcss/tailwind.css'
 import '@/styles/index.css'
 
 import { InitialThemeScript } from '@stefanprobst/next-theme'
-import type { AppProps as NextAppProps } from 'next/app'
+import type { AppProps as NextAppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { PageLayout } from '@/components/PageLayout'
+import { reportPageView } from '@/lib/core/analytics/analytics-service'
+import { AnalyticsScript } from '@/lib/core/analytics/AnalyticsScript'
 import { createSiteUrl } from '@/lib/utils'
 import { feed, webManifest } from '~/config/site.config'
 
@@ -44,6 +46,7 @@ export default function App(props: AppProps): JSX.Element {
         />
       </Head>
       <InitialThemeScript />
+      <AnalyticsScript />
       {getLayout(<Component {...pageProps} />, pageProps)}
     </Fragment>
   )
@@ -51,4 +54,18 @@ export default function App(props: AppProps): JSX.Element {
 
 const getDefaultLayout: GetLayout = function getDefaultLayout(page, pageProps) {
   return <PageLayout pageProps={pageProps}>{page}</PageLayout>
+}
+
+export function reportWebVitals(metric: NextWebVitalsMetric): void {
+  switch (metric.name) {
+    case 'Next.js-hydration':
+      /** Register right after hydration. */
+      break
+    case 'Next.js-route-change-to-render':
+      /** Register page views after client-side transitions. */
+      reportPageView()
+      break
+    default:
+      break
+  }
 }
