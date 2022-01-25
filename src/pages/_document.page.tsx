@@ -1,7 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document'
 
-/* eslint-disable @next/next/no-page-custom-font */
-
 export default function Document(): JSX.Element {
   return (
     <Html lang="en" translate="no">
