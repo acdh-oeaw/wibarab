@@ -33,7 +33,7 @@ export default function HomePage(_props: HomePage.Props): JSX.Element {
             The linguistic and socio-historical realities behind the millennia-old dichotomous
             concept of nomadic and sedentary people in the Middle East and North Africa
           </PageHeroLeadIn>
-          <Image src={ProjectLogo} alt="Project logo" />
+          <Image src={ProjectLogo} alt="Project logo" placeholder="empty" />
         </PageHeroSection>
         <PageSection>
           <div className="prose">
