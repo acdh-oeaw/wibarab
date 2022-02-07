@@ -48,8 +48,8 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
           <div className="prose">
             <p>
               The project&apos;s core team is composed of six specialists in Arabic linguistics: the
-              principal investigator (PI), two postdoctoral researcher specialized in linguistics,
-              and four PhD candidates. A second postdoctoral researcher specialized in the history
+              principal investigator (PI), two postdoctoral researchers specialized in linguistics,
+              and four PhD candidates. An expert specialized in the history
               of the Bedouins will be taken on board after the first year. WIBARAB also benefits
               from the knowledge and work of Digital Humanities specialists from the Austrian
               Academy of Sciences. Two MA students will mainly feed the database. The Vienna-based
