@@ -1,6 +1,6 @@
 import { isAbsoluteUrl } from '@stefanprobst/is-absolute-url'
 import { isNonEmptyString } from '@stefanprobst/is-nonempty-string'
-/* @ts-expect-error TypeScript does not yet underline non-top-level package exports. */
+/* @ts-expect-error TypeScript does not yet understand non-top-level package exports. */
 // eslint-disable-next-line import/no-unresolved
 import getImageMetadata from '@stefanprobst/next-image-loader/generate'
 import { RouteManifestPlugin } from '@stefanprobst/next-route-manifest'
@@ -23,6 +23,8 @@ import withHeadingIds from 'rehype-slug'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
 
+const isProductionDeploy = process.env['NEXT_PUBLIC_BASE_URL'] === 'https://wibarab.acdh.oeaw.ac.at'
+
 /** @typedef {import('next').NextConfig} NextConfig */
 
 export const routeManifestConfig = {
@@ -39,17 +41,7 @@ const config = {
     // ignoreDuringBuilds: true,
   },
   async headers() {
-    return [
-      /** Disallow indexing by search engines. */
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      },
+    const headers = [
       {
         source: '/assets/fonts/:path*',
         headers: [
@@ -60,6 +52,23 @@ const config = {
         ],
       },
     ]
+
+    if (!isProductionDeploy) {
+      headers.push(
+        /** Disallow indexing by search engines. */
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'X-Robots-Tag',
+              value: 'noindex, nofollow',
+            },
+          ],
+        },
+      )
+    }
+
+    return headers
   },
   images: {
     deviceSizes: [400, 640, 880],
