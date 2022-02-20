@@ -40,6 +40,9 @@ const config = {
     dirs: ['.'],
     // ignoreDuringBuilds: true,
   },
+  experimental: {
+    outputStandalone: true,
+  },
   async headers() {
     const headers = [
       {

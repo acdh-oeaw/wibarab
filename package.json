@@ -41,7 +41,7 @@
     "yarn": "1.x"
   },
   "dependencies": {
-    "@mdx-js/loader": "^2.0.0-rc.2",
+    "@mdx-js/loader": "^2.0.0",
     "@stefanprobst/is-absolute-url": "^1.0.1",
     "@stefanprobst/is-nonempty-string": "^1.0.0",
     "@stefanprobst/next-error-boundary": "^3.0.2",
@@ -64,7 +64,7 @@
     "clsx": "^1.1.1",
     "hastscript": "^7.0.2",
     "netlify-cms-app": "^2.15.61",
-    "next": "12.0.7",
+    "next": "^12.1.0",
     "react": "^18.0.0-rc.0",
     "react-dom": "^18.0.0-rc.0",
     "rehype-react": "^7.0.3",

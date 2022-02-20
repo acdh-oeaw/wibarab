@@ -38,11 +38,12 @@ ARG NEXT_PUBLIC_MATOMO_ID
 RUN yarn build
 
 # serve
-FROM base AS serve
+FROM node:14-slim AS serve
 
 COPY --from=build --chown=node:node /app/next.config.mjs ./
 COPY --from=build --chown=node:node /app/public ./public
-COPY --from=build --chown=node:node /app/.next ./.next
+COPY --from=build --chown=node:node /app/.next/standalone ./
+COPY --from=build --chown=node:node /app/.next/static ./.next/static
 
 # Ensures folder is owned by node:node when mounted as volume.
 RUN mkdir -p /app/.next/cache/images
@@ -51,4 +52,4 @@ ENV NODE_ENV=production
 
 EXPOSE 3000
 
-CMD ["node", "node_modules/.bin/next", "start"]
+CMD ["node", "server.js"]
