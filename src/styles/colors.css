@@ -12,7 +12,7 @@
   color-scheme: light;
 }
 
-:root[data-theme='dark'] {
+:root[data-color-scheme='dark'] {
   --color-background: hsl(355deg 16% 10%);
   --color-text: hsl(40deg 52% 80%);
   --color-text-highlighted: hsl(40deg 52% 88%);

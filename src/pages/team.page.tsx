@@ -49,11 +49,11 @@ export default function TeamPage(props: TeamPage.Props): JSX.Element {
             <p>
               The project&apos;s core team is composed of six specialists in Arabic linguistics: the
               principal investigator (PI), two postdoctoral researchers specialized in linguistics,
-              and four PhD candidates. An expert specialized in the history
-              of the Bedouins will be taken on board after the first year. WIBARAB also benefits
-              from the knowledge and work of Digital Humanities specialists from the Austrian
-              Academy of Sciences. Two MA students will mainly feed the database. The Vienna-based
-              team is supported by research partners in the Arab countries.
+              and four PhD candidates. An expert specialized in the history of the Bedouins will be
+              taken on board after the first year. WIBARAB also benefits from the knowledge and work
+              of Digital Humanities specialists from the Austrian Academy of Sciences. Two MA
+              students will mainly feed the database. The Vienna-based team is supported by research
+              partners in the Arab countries.
             </p>
           </div>
         </PageHeroSection>

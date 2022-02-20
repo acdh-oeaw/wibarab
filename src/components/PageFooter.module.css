@@ -2,7 +2,7 @@
   color: hsl(0deg 0% 18%);
 }
 
-[data-theme='dark'] .themed-image-oriental-studies {
+[data-color-scheme='dark'] .themed-image-oriental-studies {
   color: hsl(0deg 0% 100%);
 }
 
@@ -10,7 +10,7 @@
   color: hsl(0deg 0% 0%);
 }
 
-[data-theme='dark'] .themed-image-univie {
+[data-color-scheme='dark'] .themed-image-univie {
   color: hsl(0deg 0% 100%);
 }
 
@@ -18,7 +18,7 @@
   color: hsl(0deg 0% 0%);
 }
 
-[data-theme='dark'] .themed-image-acdh-ch {
+[data-color-scheme='dark'] .themed-image-acdh-ch {
   color: hsl(0deg 0% 100%);
 }
 
@@ -26,6 +26,6 @@
   color: hsl(345deg 6% 13%);
 }
 
-[data-theme='dark'] .themed-image-erc {
+[data-color-scheme='dark'] .themed-image-erc {
   color: hsl(0deg 0% 100%);
 }

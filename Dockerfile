@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # base
-FROM node:14-slim AS base
+FROM node:16-slim AS base
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
@@ -38,7 +38,7 @@ ARG NEXT_PUBLIC_MATOMO_ID
 RUN yarn build
 
 # serve
-FROM node:14-slim AS serve
+FROM node:16-slim AS serve
 
 COPY --from=build --chown=node:node /app/next.config.mjs ./
 COPY --from=build --chown=node:node /app/public ./public
