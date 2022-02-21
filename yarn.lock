@@ -1264,10 +1264,10 @@
     recast "^0.20.5"
     svgo-loader "^3.0.0"
 
-"@stefanprobst/next-theme@2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@stefanprobst/next-theme/-/next-theme-2.0.3.tgz#27becc493f27d796ec34ff586a44238e4b3f56b2"
-  integrity sha512-wiW2A2Wotr/LIo7DMEsMo10kd4AEkr5mrCsm95QD0267LRFHtvtcO1vB3HB5cFyQLoHZVLCOQep6ukXRSk8yYA==
+"@stefanprobst/next-theme@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@stefanprobst/next-theme/-/next-theme-2.0.6.tgz#2f0cfafaeecf09911aaaae112337b6cec7ff0d54"
+  integrity sha512-rfR8W37wfihIzT0/RsVHXTTuw9Fw3wiPGi/2EBdNce1Go11v+YBoQ5GbUPrfsuO5VoTS47GWReRwj0u7nSPdpA==
   dependencies:
     "@stefanprobst/assert" "^1.0.2"
 

@@ -49,7 +49,7 @@
     "@stefanprobst/next-page-metadata": "^2.0.5",
     "@stefanprobst/next-route-manifest": "^0.1.5",
     "@stefanprobst/next-svg": "^4.0.7",
-    "@stefanprobst/next-theme": "2.0.3",
+    "@stefanprobst/next-theme": "^2.0.6",
     "@stefanprobst/prettier-config": "^2.0.1",
     "@stefanprobst/rehype-fragment-links": "^1.0.0",
     "@stefanprobst/rehype-image-captions": "^1.1.0",

@@ -1,7 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import '@/styles/index.css'
 
-import { InitialThemeScript } from '@stefanprobst/next-theme'
 import type { AppProps as NextAppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
 import { Fragment } from 'react'
@@ -45,7 +44,6 @@ export default function App(props: AppProps): JSX.Element {
           href={String(createSiteUrl({ pathname: feed }))}
         />
       </Head>
-      <InitialThemeScript />
       <AnalyticsScript />
       {getLayout(<Component {...pageProps} />, pageProps)}
     </Fragment>

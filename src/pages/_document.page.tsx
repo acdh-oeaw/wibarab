@@ -1,3 +1,4 @@
+import { InitialThemeScript } from '@stefanprobst/next-theme'
 import { Head, Html, Main, NextScript } from 'next/document'
 
 export default function Document(): JSX.Element {
@@ -10,6 +11,7 @@ export default function Document(): JSX.Element {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,400..700;1,400..700&display=swap"
           rel="stylesheet"
         />
+        <InitialThemeScript />
       </Head>
       <body>
         <Main />
