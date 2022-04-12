@@ -5,6 +5,7 @@ export default function Document(): JSX.Element {
   return (
     <Html lang="en" translate="no">
       <Head>
+        <meta name="google-site-verification" content="2E6Gsm_z7nNdzTg7J9dZ-V3QJVDpPerwRtSGF0ulrMA" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
