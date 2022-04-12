@@ -1,3 +1,5 @@
+import type { StaticImageData } from 'next/image'
+
 type UrlString = string
 
 export type TeamRole = 'core' | 'extended'
