@@ -42,7 +42,7 @@ export interface SiteMetadata {
 
 export const siteMetadata: SiteMetadata = {
   url: baseUrl,
-  title: 'What is bedouin-type Arabic?',
+  title: 'What is bedouin-type Arabic? (WIBARAB)',
   shortTitle: 'WIBARAB',
   description:
     'The linguistic and socio-historical realities behind the millennia-old dichotomous concept of nomadic and sedentary people in the Middle East and North Africa',
