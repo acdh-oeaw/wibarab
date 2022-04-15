@@ -35,7 +35,7 @@
     "type-check": "tsc -p ./tsconfig.json --noEmit",
     "validate": "yarn run format && yarn run lint && yarn run type-check && yarn run test"
   },
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "yarn@1.22.18",
   "engines": {
     "node": "16.x",
     "yarn": "1.x"
@@ -64,7 +64,7 @@
     "clsx": "^1.1.1",
     "hastscript": "^7.0.2",
     "netlify-cms-app": "^2.15.61",
-    "next": "^12.1.4",
+    "next": "^12.1.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rehype-react": "^7.1.0",
@@ -82,7 +82,7 @@
     "@commitlint/cli": "^16.2.3",
     "@commitlint/cz-commitlint": "^16.2.3",
     "@jest/types": "^27.5.1",
-    "@next/eslint-plugin-next": "^12.1.4",
+    "@next/eslint-plugin-next": "^12.1.5",
     "@stefanprobst/commitlint-config": "^1.0.2",
     "@stefanprobst/eslint-config-next": "^5.0.2",
     "@stefanprobst/favicons": "^2.0.4",
@@ -97,7 +97,7 @@
     "@types/mdx": "^2.0.1",
     "@types/node": "^16.11.25",
     "@types/postcss-import": "^14.0.0",
-    "@types/react": "^18.0.2",
+    "@types/react": "^18.0.5",
     "@types/tailwindcss": "^3.0.10",
     "autoprefixer": "^10.4.4",
     "commitizen": "^4.2.4",
